@@ -7,11 +7,6 @@ const clientConfig = require("./client-config")
 
 const isProd = process.env.NODE_ENV === "production"
 module.exports = {
-  siteMetadata: {
-    title: `Kapit-Bisig Laban COVID Toronto`,
-    description: `We're in this together. We're here for each other.`,
-    author: `@zlidev`,
-  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {

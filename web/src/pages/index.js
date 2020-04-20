@@ -160,12 +160,4 @@ const IndexPage = ({ data }) => {
   )
 }
 
-IndexPage.propTypes = {
-  site: PropTypes.shape({
-    siteMetadata: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    }),
-  }),
-}
 export default IndexPage

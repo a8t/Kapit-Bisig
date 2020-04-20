@@ -15,10 +15,8 @@ import Navbar from "./navbar"
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
+      site: sanitySiteConfig {
+        title
       }
     }
   `)
@@ -27,7 +25,7 @@ const Layout = ({ children }) => {
     <>
       {/* Wrapper for sticky footer */}
       <div className="site">
-        <Navbar siteTitle={data.site.siteMetadata.title} />
+        <Navbar siteTitle={data.site.title} />
         <main className="site-content">{children}</main>
         <MainFooter />
       </div>

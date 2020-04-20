@@ -57,7 +57,7 @@ const KapitBisigHero = ({ siteTitle, description }) => {
               }}
             >
               {/* Headline */}
-              <Title style={{ marginTop: "auto" }}>{description}</Title>
+              <Title style={{ marginTop: "auto" }}>{siteTitle}</Title>
 
               <Content>Kapit-Bisig means "linking arms" in Tagalog.</Content>
               <Content>

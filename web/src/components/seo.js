@@ -14,11 +14,11 @@ function SEO({ description, lang, meta, title, ogImage = null }) {
   const { site, defaultOgImage } = useStaticQuery(
     graphql`
       query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
+        site: sanitySiteConfig {
+          title
+          url
+          frontpage {
+            id
           }
         }
         defaultOgImage: file(relativePath: { eq: "kapitbisig-og.png" }) {
@@ -32,7 +32,8 @@ function SEO({ description, lang, meta, title, ogImage = null }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription =
+    description || site.description || "We're in this together."
 
   return (
     <Helmet
@@ -40,7 +41,7 @@ function SEO({ description, lang, meta, title, ogImage = null }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${site.title}`}
       meta={[
         {
           name: `description`,
@@ -68,7 +69,7 @@ function SEO({ description, lang, meta, title, ogImage = null }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: "Kapit-Bisig Canada",
         },
         {
           name: `twitter:title`,
