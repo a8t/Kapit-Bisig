@@ -14,6 +14,11 @@ export default {
       title: 'Site title'
     },
     {
+      name: 'subtitle',
+      type: 'string',
+      title: 'Site subtitle'
+    },
+    {
       title: 'URL',
       name: 'url',
       type: 'url',
