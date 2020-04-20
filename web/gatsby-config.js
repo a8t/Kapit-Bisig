@@ -1,24 +1,52 @@
 // Load variables from `.env` as soon as possible
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV || 'development'}`
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV || "development"}`,
 })
 
-const clientConfig = require('./client-config')
+const clientConfig = require("./client-config")
 
-const isProd = process.env.NODE_ENV === 'production'
-
+const isProd = process.env.NODE_ENV === "production"
 module.exports = {
+  siteMetadata: {
+    title: `Kapit-Bisig Laban COVID Toronto`,
+    description: `We're in this together. We're here for each other.`,
+    author: `@zlidev`,
+  },
   plugins: [
-    'gatsby-plugin-postcss',
-    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-source-sanity',
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `gatsby-starter-default`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-source-sanity",
       options: {
         ...clientConfig.sanity,
         token: process.env.SANITY_READ_TOKEN,
         watchMode: !isProd,
-        overlayDrafts: !isProd
-      }
-    }
-  ]
+        overlayDrafts: !isProd,
+      },
+    },
+  ],
 }

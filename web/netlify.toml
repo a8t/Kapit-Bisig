@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/needs-form"
+  to = "https://airtable.com/shrD89UONSTlE1xA4"
+  status = 301
+
+[[redirects]]
+  from = "/volunteer-form"
+  to = "https://airtable.com/shra1PsY5ruuegHID"
+  status = 301
