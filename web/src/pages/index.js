@@ -29,7 +29,7 @@ import { RequestAid, Volunteer } from "../components/callToAction"
 import ContactForm from "../components/contact"
 
 export const query = graphql`
-  fragment SanityImage on SanityMainImage {
+  fragment SanityImage on SanityImage {
     crop {
       _key
       _type
@@ -52,36 +52,11 @@ export const query = graphql`
   }
 
   query IndexPageQuery {
-    site {
-      siteMetadata {
-        title
-        description
-      }
-    }
-    newSite: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+    site: sanitySiteConfig {
       title
-      description
-      keywords
-    }
-    posts: allSanityPost(
-      limit: 6
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-    ) {
-      edges {
-        node {
-          id
-          publishedAt
-          mainImage {
-            ...SanityImage
-            alt
-          }
-          title
-          _rawExcerpt
-          slug {
-            current
-          }
-        }
+      url
+      frontpage {
+        id
       }
     }
   }
@@ -91,57 +66,13 @@ const Section = props => {
   return <section style={{ paddingTop: 32, paddingBottom: 32 }} {...props} />
 }
 
-const NewIndexPage = props => {
-  const { data, errors } = props
-
-  if (errors) {
-    return (
-      <Layout>
-        <GraphQLErrorList errors={errors} />
-      </Layout>
-    )
-  }
-
-  const site = (data || {}).site
-  const postNodes = (data || {}).posts
-    ? mapEdgesToNodes(data.posts)
-        .filter(filterOutDocsWithoutSlugs)
-        .filter(filterOutDocsPublishedInTheFuture)
-    : []
-
-  if (!site) {
-    throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
-    )
-  }
-
-  return (
-    <Layout>
-      <SEO
-        title={site.title}
-        description={site.description}
-        keywords={site.keywords}
-      />
-      <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
-        {/* {postNodes && (
-          <BlogPostPreviewList
-            title='Latest blog posts'
-            nodes={postNodes}
-            browseMoreHref='/archive/'
-          />
-        )} */}
-      </Container>
-    </Layout>
-  )
-}
-
 const IndexPage = ({ data }) => {
-  const page = data.site.siteMetadata
+  const { site } = data
+
   return (
     <Layout>
       <SEO title="Kapit-Bisig" />
-      <Hero siteTitle={page.title} description={page.description} />
+      <Hero siteTitle={site.title} description={""} />
       <Section>
         <Container>
           <Title>How does it work?</Title>
