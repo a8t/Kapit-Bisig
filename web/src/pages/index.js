@@ -13,6 +13,7 @@ import {
   CardContent,
   Columns,
   CardHeaderTitle,
+  Section,
 } from "bloomer"
 
 import {
@@ -62,7 +63,7 @@ export const query = graphql`
   }
 `
 
-const Section = props => {
+const SectionWithSpacing = props => {
   return <section style={{ paddingTop: 32, paddingBottom: 32 }} {...props} />
 }
 
@@ -122,7 +123,7 @@ const IndexPage = ({ data }) => {
           <Columns>
             <Column isSize="1/2">
               <Content>
-                <Section>
+                <SectionWithSpacing>
                   <h3>Who are we?</h3>
                   <p>
                     We are a group of Filipinos, allies, and concerned community
@@ -137,9 +138,9 @@ const IndexPage = ({ data }) => {
                       <Icon className="fa fa-arrow-right fa-sm" />
                     </Button>
                   </Link>
-                </Section>
+                </SectionWithSpacing>
 
-                <Section>
+                <SectionWithSpacing>
                   <h3>Contact us</h3>
                   <p>
                     If you have questions or concerns, please fill out the form
@@ -150,7 +151,7 @@ const IndexPage = ({ data }) => {
                     If you need help urgently, please{" "}
                     <Link to="hotline">call our hotline</Link>.
                   </p>
-                </Section>
+                </SectionWithSpacing>
               </Content>
             </Column>
           </Columns>
