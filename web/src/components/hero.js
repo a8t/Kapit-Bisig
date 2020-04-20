@@ -14,7 +14,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import CallToAction from "./callToAction"
 
-const KapitBisigHero = ({ siteTitle, description }) => {
+const KapitBisigHero = ({ siteTitle, subtitle }) => {
   const { logo } = useStaticQuery(
     graphql`
       query {
@@ -23,7 +23,7 @@ const KapitBisigHero = ({ siteTitle, description }) => {
             fluid(
               maxWidth: 900
               traceSVG: {
-                color: "#0066CC"
+                color: "rgba(0,0,0,0)"
                 turnPolicy: TURNPOLICY_MINORITY
                 blackOnWhite: false
               }
@@ -57,7 +57,7 @@ const KapitBisigHero = ({ siteTitle, description }) => {
               }}
             >
               {/* Headline */}
-              <Title style={{ marginTop: "auto" }}>{siteTitle}</Title>
+              <Title style={{ marginTop: "auto" }}>{subtitle}</Title>
 
               <Content>Kapit-Bisig means "linking arms" in Tagalog.</Content>
               <Content>

@@ -55,6 +55,7 @@ export const query = graphql`
   query IndexPageQuery {
     site: sanitySiteConfig {
       title
+      subtitle
       url
       frontpage {
         id
@@ -73,7 +74,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Kapit-Bisig" />
-      <Hero siteTitle={site.title} description={""} />
+      <Hero siteTitle={site.title} subtitle={site.subtitle} />
       <Section>
         <Container>
           <Title>How does it work?</Title>
