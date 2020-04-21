@@ -2,7 +2,7 @@ import React from "react"
 import { Card, CardImage, CardHeader, CardHeaderTitle } from "bloomer"
 import Img from "gatsby-image"
 
-const CityCard = ({ city }) => {
+const CityCard = ({ city, link = null }) => {
   const {
     city: cityName,
     province,
@@ -11,7 +11,7 @@ const CityCard = ({ city }) => {
   } = city
 
   return (
-    <a href={form}>
+    <a href={link || form}>
       <Card
         style={{
           width: 192,
