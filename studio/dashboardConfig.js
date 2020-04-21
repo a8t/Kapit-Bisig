@@ -1,11 +1,5 @@
 export default {
   widgets: [
-    {
-      name: 'sanity-tutorials',
-      options: {
-        templateRepoId: 'sanity-io/sanity-template-nextjs-landing-pages'
-      }
-    },
     {name: 'structure-menu'},
     {
       name: 'project-info',
@@ -19,15 +13,15 @@ export default {
               sites: [
                 {
                   buildHookId: '5e9d1495c73268298c218710',
-                  title: 'Sanity Studio',
-                  name: 'sanity-nextjs-landing-pages-studio-bdi5yq35',
-                  apiId: '15eba709-d1da-4598-abbf-9da9b909668f'
+                  title: 'admin.kapitbisig.ca | Admin Page',
+                  name: 'kapitbisig-admin',
+                  apiId: 'adced667-19c9-4c0c-a8db-1bc8a99c6f75'
                 },
                 {
                   buildHookId: '5e9d14956446ed17fc988ae7',
-                  title: 'Landing pages Website',
-                  name: 'sanity-nextjs-landing-pages-web-t68qtxtg',
-                  apiId: '4535b0d4-1999-492f-865e-6e7554c1e34a'
+                  title: 'kapitbisig.ca | Landing Page',
+                  name: 'kapitbisig',
+                  apiId: '5e23f815-10bc-4f84-a40e-c4c377300c84'
                 }
               ]
             }
@@ -36,10 +30,14 @@ export default {
         data: [
           {
             title: 'GitHub repo',
-            value: 'https://github.com/a8t/sanity-nextjs-landing-pages',
+            value: 'https://github.com/a8t/kapit-bisig',
             category: 'Code'
           },
-          {title: 'Frontend', value: 'https://sanity-nextjs-landing-pages-web-t68qtxtg.netlify.app', category: 'apps'}
+          {
+            title: 'Frontend',
+            value: 'https://kapitbisig.ca',
+            category: 'apps'
+          }
         ]
       }
     },
