@@ -1,7 +1,7 @@
 import {MdPinDrop} from 'react-icons/lib/md'
 
 export default {
-  name: 'City',
+  name: 'City', // accidentally made this uppercase...
   type: 'document',
   title: 'City',
   icon: MdPinDrop,
@@ -15,6 +15,11 @@ export default {
       name: 'province',
       type: 'string',
       title: 'Province'
+    },
+    {
+      name: 'description',
+      type: 'string',
+      title: 'Description'
     },
     {
       name: 'requestForm',
