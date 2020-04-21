@@ -8,14 +8,12 @@ const BlockContent = require("@sanity/block-content-to-react")
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
-
 exports.createPages = async ({ graphql, actions }) => {
-  // **Note:** The graphql function call returns a Promise
-  // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
-  const result = await graphql(`
+  const {
+    data: { pages, routes, cities },
+  } = await graphql(`
     query {
-      allSanityPage {
+      pages: allSanityPage {
         nodes {
           _id
           title
@@ -23,7 +21,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
 
-      allSanityRoute {
+      routes: allSanityRoute {
         nodes {
           page {
             _id
@@ -33,20 +31,46 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
+      cities: allSanityCity {
+        nodes {
+          city
+          province
+          requestForm
+          volunteerForm
+        }
+      }
     }
   `)
 
-  const pages = result.data.allSanityPage.nodes
-
-  result.data.allSanityRoute.nodes.forEach(({ page, slug }) => {
+  // create a page for each route
+  routes.nodes.forEach(({ page, slug }) => {
     actions.createPage({
       path: `${slug.current}`,
       component: path.resolve("src/templates/ContentPage.js"),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
-        page: pages.find(({ _id }) => _id === page._id),
+        page: pages.nodes.find(({ _id }) => _id === page._id),
       },
     })
+  })
+
+  // create a page for each city
+  cities.nodes.forEach(({ city, province, requestForm, volunteerForm }) => {
+    actions.createPage({
+      path: `cities/${city.toLowerCase()}`,
+      component: path.resolve("src/templates/CityPage.js"),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        city,
+        province,
+        requestForm,
+        volunteerForm,
+      },
+    })
+  })
+
   })
 }

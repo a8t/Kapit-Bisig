@@ -48,18 +48,18 @@ export default class navbar extends Component {
             {/* Page nav links */}
             <NavbarEnd>
               <Link
-                to="/"
-                className="navbar-link nav-item is-arrowless"
-                activeClassName="is-active"
-              >
-                Home
-              </Link>
-              <Link
                 to="/about"
                 activeClassName="is-active"
                 className="navbar-link nav-item is-arrowless"
               >
                 About
+              </Link>
+              <Link
+                to="/cities"
+                className="navbar-link nav-item is-arrowless"
+                activeClassName="is-active"
+              >
+                Cities
               </Link>
               <Link
                 to="/contact"
