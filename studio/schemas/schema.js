@@ -9,6 +9,7 @@ import page from './documents/page'
 import route from './documents/route'
 import siteConfig from './documents/siteConfig'
 import city from './documents/city'
+import organization from './documents/organization'
 
 // Object types
 import cta from './objects/cta'
@@ -39,12 +40,13 @@ export default createSchema({
     internalLink,
     link,
     mailchimp,
-    page,
     portableText,
-    route,
     simplePortableText,
-    siteConfig,
     textSection,
-    city
+    siteConfig,
+    page,
+    route,
+    city,
+    organization
   ])
 })
