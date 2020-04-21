@@ -17,9 +17,8 @@ import SEO from "../components/seo"
 import ContactForm from "../components/contact"
 import PortableText from "../components/portableText"
 
-const About = ({ pathContext }) => {
-  const { title, _rawContent } = pathContext.page
-
+const About = ({ pageContext }) => {
+  const { title, _rawContent } = pageContext.page
   return (
     <Layout>
       <SEO title="About us" />
