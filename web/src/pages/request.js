@@ -13,9 +13,11 @@ const RequestPage = () => {
       query RequestPageQuery {
         cities: allSanityCity {
           nodes {
-            city
-            province
-            form: requestForm
+            name
+            province {
+              name
+            }
+            requestForm
             cityLogo {
               asset {
                 fluid(maxWidth: 700) {
@@ -28,7 +30,7 @@ const RequestPage = () => {
       }
     `
   )
-
+  console.log(cities)
   return (
     <Layout>
       <SEO title="Request | Kapit-Bisig Canada" />
@@ -38,11 +40,16 @@ const RequestPage = () => {
           <Content>
             Select your city to request help. More are coming soon.
           </Content>
-          <div style={{ display: "flex" }}>
-            {cities.nodes.map(city => {
-              return <CityCard city={city} />
-            })}
-          </div>
+          {cities.nodes.map(city => {
+            return (
+              <CityCard
+                name={city.name}
+                provinceName={city.province.name}
+                cityLogoAssetFluid={city.cityLogo?.asset.fluid}
+                link={city.requestForm}
+              />
+            )
+          })}
         </Container>
       </Section>
     </Layout>

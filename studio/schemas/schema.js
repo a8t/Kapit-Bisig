@@ -10,6 +10,7 @@ import route from './documents/route'
 import siteConfig from './documents/siteConfig'
 import city from './documents/city'
 import organization from './documents/organization'
+import province from './documents/province'
 
 // Object types
 import cta from './objects/cta'
@@ -47,6 +48,7 @@ export default createSchema({
     page,
     route,
     city,
-    organization
+    organization,
+    province
   ])
 })

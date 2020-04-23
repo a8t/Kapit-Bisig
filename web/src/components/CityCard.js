@@ -1,32 +1,31 @@
 import React from "react"
+import { Link as GatsbyLink } from "gatsby"
 import { Card, CardImage, CardHeader, CardHeaderTitle } from "bloomer"
 import Img from "gatsby-image"
 
-const CityCard = ({ city, link = null }) => {
-  const {
-    city: cityName,
-    province,
-    form,
-    cityLogo: { asset },
-  } = city
+import Link from "../components/Link"
 
+const CityCard = ({ name, provinceName, cityLogoAssetFluid, link }) => {
   return (
-    <a href={link || form}>
-      <Card
+    <p>
+      <Link to={link}>
+        {name}
+        {/* <Card
         style={{
           width: 192,
         }}
       >
         <CardHeader>
           <CardHeaderTitle style={{ justifyContent: "center" }}>
-            {cityName}, {province}
+            {name}, {provinceName}
           </CardHeaderTitle>
         </CardHeader>
         <CardImage>
-          <Img fluid={asset.fluid}></Img>
+          {cityLogoAssetFluid && <Img fluid={cityLogoAssetFluid}></Img>}
         </CardImage>
-      </Card>
-    </a>
+      </Card> */}
+      </Link>
+    </p>
   )
 }
 

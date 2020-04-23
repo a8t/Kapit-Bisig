@@ -1,26 +1,27 @@
 import React from "react"
-import { Section, Container, Title, Content } from "bloomer"
+import { Section, Container, Title, Content, Subtitle } from "bloomer"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
+import { toKebabCase } from "../utils/toKebabCase"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CityCard from "../components/CityCard"
 
-const VolunteerPage = () => {
+const CitiesPage = () => {
   const { cities } = useStaticQuery(
     graphql`
       query CitiesPageQuery {
         cities: allSanityCity {
-          nodes {
-            city
-            province
-            volunteerForm
-            requestForm
-            cityLogo {
-              asset {
-                fluid(maxWidth: 700) {
-                  ...GatsbySanityImageFluid
+          citiesGroupedByProvince: group(field: province___name) {
+            provinceName: fieldValue
+            cities: nodes {
+              name
+              cityLogo {
+                asset {
+                  fluid(maxWidth: 700) {
+                    ...GatsbySanityImageFluid
+                  }
                 }
               }
             }
@@ -40,13 +41,30 @@ const VolunteerPage = () => {
             Our local networks are set up on the city level. Please check each
             city page for more information.
           </Content>
-          <div style={{ display: "flex" }}>
-            {cities.nodes.map(eachCity => {
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {cities.citiesGroupedByProvince.map(({ provinceName, cities }) => {
               return (
-                <CityCard
-                  city={eachCity}
-                  link={`/cities/${eachCity.city.toLowerCase()}`}
-                />
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    paddingBottom: 32,
+                  }}
+                >
+                  <Subtitle isSize={5} isMarginless>
+                    {provinceName}
+                  </Subtitle>
+                  {cities.map(city => {
+                    return (
+                      <CityCard
+                        name={city.name}
+                        provinceName={provinceName}
+                        cityLogoAssetFluid={city.cityLogo?.asset.fluid}
+                        link={`/cities/${toKebabCase(city.name)}`}
+                      />
+                    )
+                  })}
+                </div>
               )
             })}
           </div>
@@ -55,4 +73,4 @@ const VolunteerPage = () => {
     </Layout>
   )
 }
-export default VolunteerPage
+export default CitiesPage

@@ -16,20 +16,30 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ContactForm from "../components/contact"
 import PortableText from "../components/portableText"
+import OrganizationCard from "../components/OrganizationCard"
 
 const CityPage = ({ pageContext }) => {
-  const { city, province, requestForm, volunteerForm } = pageContext
+  console.warn(pageContext)
+  const {
+    name,
+    province: { name: provinceName },
+    requestForm,
+    volunteerForm,
+    organizations,
+  } = pageContext
+
+  console.warn(organizations)
 
   return (
     <Layout>
-      <SEO title={`${city} | Kapit-Bisig Canada`} />
+      <SEO title={`${name} | Kapit-Bisig Canada`} />
       <Section className="has-background-white">
         <Container>
           <Columns>
             <Column isSize="1/2">
               {/* Page title */}
               <Title>
-                {city}, {province}
+                {name}, {provinceName}
               </Title>
               <Content>
                 {/* {_rawContent.map(({ heading, text }) => (
@@ -38,20 +48,20 @@ const CityPage = ({ pageContext }) => {
                     <PortableText blocks={text} />
                   </>
                 ))} */}
+                {organizations.map(organization => (
+                  <OrganizationCard
+                    name={organization.name}
+                    cityNames={organization.cities.map(({ name }) => name)}
+                    provinceName={organization.province.name}
+                    email={organization.email}
+                    twitter={organization.twitter}
+                    facebook={organization.facebook}
+                    phone={organization.phone}
+                    website={organization.website}
+                    instagram={organization.instagram}
+                  />
+                ))}
               </Content>
-
-              {/* Back to homepage button */}
-              <Link to="/">
-                <Button
-                  isColor="primary"
-                  className="is-rounded"
-                  id="is-spaced"
-                  style={{ marginTop: 32 }}
-                >
-                  <Icon className="fa fa-arrow-left fa-sm" />
-                  <span>Go back to the homepage</span>
-                </Button>
-              </Link>
             </Column>
           </Columns>
         </Container>

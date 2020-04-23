@@ -13,10 +13,29 @@ export default {
       title: 'Name'
     },
     {
-      name: 'city',
+      name: 'province',
       type: 'reference',
-      to: [{type: 'City'}],
-      title: 'City'
+      to: [{type: 'province'}],
+      title: 'Province'
+    },
+    {
+      name: 'cities',
+      type: 'array',
+      title: 'Cities',
+      of: [
+        {
+          name: 'city',
+          type: 'reference',
+          to: [{type: 'city'}],
+          title: 'City'
+        }
+      ]
+    },
+    {
+      name: 'content',
+      type: 'array',
+      title: 'Page sections',
+      of: [{type: 'hero'}, {type: 'imageSection'}, {type: 'mailchimp'}, {type: 'textSection'}]
     },
     {
       title: 'Website',

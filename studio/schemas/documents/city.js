@@ -1,19 +1,20 @@
 import {MdPinDrop} from 'react-icons/lib/md'
 
 export default {
-  name: 'City', // accidentally made this uppercase...
+  name: 'city', // accidentally made this uppercase...
   type: 'document',
   title: 'City',
   icon: MdPinDrop,
   fields: [
     {
-      name: 'city',
+      name: 'name',
       type: 'string',
-      title: 'City'
+      title: 'Name'
     },
     {
       name: 'province',
-      type: 'string',
+      type: 'reference',
+      to: [{type: 'province'}],
       title: 'Province'
     },
     {

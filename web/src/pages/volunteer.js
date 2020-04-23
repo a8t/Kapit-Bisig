@@ -7,23 +7,17 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CityCard from "../components/CityCard"
 
-const cities = [
-  {
-    name: "Toronto, Ontario",
-    link: "https://bit.ly/kapitbisigto-volunteer",
-    imageName: "toronto",
-  },
-]
-
 const VolunteerPage = () => {
   const { cities } = useStaticQuery(
     graphql`
       query VolunteerPageQuery {
         cities: allSanityCity {
           nodes {
-            city
-            province
-            form: volunteerForm
+            name
+            province {
+              name
+            }
+            volunteerForm
             cityLogo {
               asset {
                 fluid(maxWidth: 700) {
@@ -46,11 +40,16 @@ const VolunteerPage = () => {
           <Content>
             Select the city closest to you to register. More are coming soon.
           </Content>
-          <div style={{ display: "flex" }}>
-            {cities.nodes.map(city => {
-              return <CityCard city={city} />
-            })}
-          </div>
+          {cities.nodes.map(city => {
+            return (
+              <CityCard
+                name={city.name}
+                provinceName={city.province.name}
+                cityLogoAssetFluid={city.cityLogo?.asset.fluid}
+                link={city.volunteerForm}
+              />
+            )
+          })}
         </Container>
       </Section>
     </Layout>

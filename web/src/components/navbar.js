@@ -54,13 +54,7 @@ export default class navbar extends Component {
               >
                 About
               </Link>
-              <Link
-                to="/cities"
-                className="navbar-link nav-item is-arrowless"
-                activeClassName="is-active"
-              >
-                Cities
-              </Link>
+
               <Link
                 to="/contact"
                 activeClassName="is-active"

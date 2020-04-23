@@ -1,6 +1,6 @@
 import React from "react"
 import { Footer, Container, Content, Icon } from "bloomer"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import PortableText from "./portableText"
 
 const MainFooter = () => {
@@ -27,6 +27,15 @@ const MainFooter = () => {
         <Content>
           <PortableText blocks={site._rawFooterText} />
         </Content>
+        <Content isSize="small">
+          <nav style={{ display: "grid", gridGap: 8 }}>
+            <Link to="/about">About</Link>
+            <Link to="/cities">Cities</Link>
+            <Link to="/organizations">Organizations</Link>
+            <Link to="/contact">Contact</Link>
+          </nav>
+        </Content>
+
         <Content isSize="small">
           <p>© {new Date().getFullYear()}</p>
         </Content>
