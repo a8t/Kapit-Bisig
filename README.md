@@ -1,38 +1,53 @@
 # Kapit-Bisig
 
-_Fully customizable blog template with a React.js front-end._
+www.kapitbisig.ca
 
-Deployed from [sanity.io/create](https://www.sanity.io/create/?template=sanity-io%2Fsanity-template-gatsby-blog).
+Kapit-Bisig is a mutual aid, advocacy, and information network by and for the Filipino community in Canada.
 
-## What you have
+For more information, contact info@kapitbisig.ca or check out the website.
 
-- A blazing fast blog with [Gatsby.js](https://gatsbyjs.org)
-- Structured content using [Sanity.io](https://www.sanity.io)
-- Global deployment on [Netlify](https://netlify.com)
+___
 
-## Quick start
 
-1. Clone this repository
-2. `npm install` in the project root folder on local
-3. `npm run dev` to start the studio and frontend locally
-   - Your studio should be running on [http://localhost:3333](http://localhost:3333)
-   - Your frontend should be running on [http://localhost:8000](http://localhost:8000)
-4. `npm run build` to build to production locally
+This project is a [Gatsby](gatsbyjs.org/) website with a [Sanity.io](sanity.io/). 
 
-## Enable real-time content preview on development
+It's a monorepo managed using [Lerna](https://lerna.js.org/).  
 
-1. Go to your [project’s API settings on manage.sanity.io](https://manage.sanity.io/projects/q69wua45/settings/api) and create a token with read rights.
-2. Rename `.env.development.template` to `.env.development` and paste in the token: `SANITY_READ_TOKEN="yourTokenHere"`.
-3. Restart the development server (`ctrl + C` and `npm run dev`).
+## Installation
 
-If you want to turn off preview you can set `watchMode: false` in gatsby-config.js. If you just want to preview published changes you can set `overlayDrafts: false` in gatsby-config.js.
+From this top-level directory, you can simply run:
 
-## Deploy changes
+```bash
+npm install
+```
 
-Netlify automatically deploys new changes commited to master on GitHub. If you want to change deployment branch, do so in [build & deploy settings on Netlify](https://www.netlify.com/docs/continuous-deployment/#branches-deploys).
+This will install packages in this directory as well as in the child directories.  
 
-## Stuck? Get help
+## Running locally
 
-[![Slack Community Button](https://slack.sanity.io/badge.svg)](https://slack.sanity.io/)
+### Web
 
-Join [Sanity’s developer community](https://slack.sanity.io) or ping us [on twitter](https://twitter.com/sanity_io).
+You can serve the Gatsby site (the main front-end) from a local server for development. 
+
+```bash
+cd ./web
+npm run dev
+```
+
+This starts up the development server with all the fancy React hot-reloading and stuff like that. 
+
+You can now access the site at http://localhost:8000, and the Gatsby Graphiql page at http://localhost:8000/___graphql.
+
+### Sanity Studio
+
+Sanity is a hosted backend and database service. All we have to do in order to use it is develop a schema for our data to use it.
+
+Sanity includes a single page app 
+
+```bash
+cd ./studio
+npm run dev
+```
+
+Now head to http://localhost:3000 to start editing content.
+
