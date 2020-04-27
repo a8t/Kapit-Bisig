@@ -90,7 +90,7 @@ exports.createPages = async ({ graphql, actions }) => {
   routes.nodes.forEach(({ page, slug }) => {
     actions.createPage({
       path: `${slug.current}`,
-      component: path.resolve("src/templates/ContentPage.js"),
+      component: path.resolve("src/templates/ContentPage.tsx"),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
@@ -103,7 +103,7 @@ exports.createPages = async ({ graphql, actions }) => {
   provinces.nodes.forEach(({ name, cities }) => {
     actions.createPage({
       path: `provinces/${toKebabCase(name)}`,
-      component: path.resolve("src/templates/ProvincePage.js"),
+      component: path.resolve("src/templates/ProvincePage.tsx"),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
@@ -121,7 +121,7 @@ exports.createPages = async ({ graphql, actions }) => {
   cities.nodes.forEach(({ name, province, requestForm, volunteerForm }) => {
     actions.createPage({
       path: `cities/${toKebabCase(name)}`,
-      component: path.resolve("src/templates/CityPage.js"),
+      component: path.resolve("src/templates/CityPage.tsx"),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
@@ -153,7 +153,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }) => {
       actions.createPage({
         path: `organizations/${toKebabCase(name)}`,
-        component: path.resolve("src/templates/OrganizationPage.js"),
+        component: path.resolve("src/templates/OrganizationPage.tsx"),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
