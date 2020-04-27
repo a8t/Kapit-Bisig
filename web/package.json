@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "kapit-bisig-canada",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A landing page and content editor for Kapit-Bisig Canada's website",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Kapit-Bisig Canada <contact@kapitbisig.ca>",
   "dependencies": {
     "bloomer": "0.6.5",
     "bulma": "0.8.1",
@@ -33,22 +33,16 @@
     "prettier": "1.19.1"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "COVID"
   ],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "npm run dev",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
