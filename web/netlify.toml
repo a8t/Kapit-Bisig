@@ -1,9 +1,14 @@
 [[redirects]]
-  from = "/needs-form"
+  from = "/links/toronto-needs"
   to = "https://airtable.com/shrD89UONSTlE1xA4"
   status = 301
 
 [[redirects]]
-  from = "/volunteer-form"
+  from = "/links/toronto-volunteer"
   to = "https://airtable.com/shra1PsY5ruuegHID"
+  status = 301
+
+[[redirects]]
+  from = "/links/toronto-donate"
+  to = "https://actionnetwork.org/fundraising/community-support-for-filipinos-to/"
   status = 301
