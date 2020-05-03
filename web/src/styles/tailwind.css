@@ -20,6 +20,10 @@ p {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  @apply text-blue-500;
+}
+
 @tailwind components;
 
 @tailwind utilities;
