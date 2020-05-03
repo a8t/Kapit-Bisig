@@ -99,23 +99,23 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // create a page for each province
-  provinces.nodes.forEach(({ name, cities }) => {
-    actions.createPage({
-      path: `provinces/${toKebabCase(name)}`,
-      component: path.resolve("src/templates/ProvincePage.tsx"),
-      context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
-        name,
-        cities,
-        organizations: organizations.nodes.filter(
-          ({ province: organizationProvince }) =>
-            name === organizationProvince.name
-        ),
-      },
-    })
-  })
+  // // create a page for each province
+  // provinces.nodes.forEach(({ name, cities }) => {
+  //   actions.createPage({
+  //     path: `provinces/${toKebabCase(name)}`,
+  //     component: path.resolve("src/templates/ProvincePage.tsx"),
+  //     context: {
+  //       // Data passed to context is available
+  //       // in page queries as GraphQL variables.
+  //       name,
+  //       cities,
+  //       organizations: organizations.nodes.filter(
+  //         ({ province: organizationProvince }) =>
+  //           name === organizationProvince.name
+  //       ),
+  //     },
+  //   })
+  // })
 
   // create a page for each province
   cities.nodes.forEach(({ name, province, requestForm, volunteerForm }) => {
