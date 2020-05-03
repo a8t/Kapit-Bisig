@@ -30,7 +30,7 @@ const MainFooter = () => {
         <Content isSize="small">
           <nav className="grid gap-3 my-4">
             <Link to="/about">About</Link>
-            <Link to="/cities">Cities</Link>
+            <Link to="/cities">Find local support</Link>
             <Link to="/organizations">Organizations</Link>
             <Link to="/contact">Contact</Link>
           </nav>
