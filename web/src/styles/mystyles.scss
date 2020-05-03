@@ -33,13 +33,13 @@ $footer-background-color: #f7f8fa;
 $footer-color: true;
 
 // Import only what you need from Bulma. By default this starter contains all of the styles.
-@import "~bulma/sass/utilities/_all.sass";
-@import "~bulma/sass/base/_all.sass";
-@import "~bulma/sass/components/_all.sass";
-@import "~bulma/sass/elements/_all.sass";
-@import "~bulma/sass/form/_all.sass";
-@import "~bulma/sass/layout/_all.sass";
-@import "~bulma/sass/grid/_all.sass";
+// @import "~bulma/sass/utilities/_all.sass";
+// @import "~bulma/sass/base/_all.sass";
+// @import "~bulma/sass/components/_all.sass";
+// @import "~bulma/sass/elements/_all.sass";
+// @import "~bulma/sass/form/_all.sass";
+// @import "~bulma/sass/layout/_all.sass";
+// @import "~bulma/sass/grid/_all.sass";
 
 // Font Awesome styles. Modify this to import only what you need.
 @import "~@fortawesome/fontawesome-free/css/all.css";
@@ -58,17 +58,9 @@ $footer-color: true;
   flex-grow: 1;
   overflow: hidden;
 }
-// Modify list styles
-#list-unstyled {
-  list-style: none;
-}
-// Margins for buttons
-#btn-spaced {
-  margin: 1rem 0;
-}
-// Margins for features icons
-#feature-icon {
-  margin-right: 1.5rem;
+
+a {
+  color: blue;
 }
 
 .navbar {

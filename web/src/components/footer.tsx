@@ -20,15 +20,16 @@ const MainFooter = () => {
       }
     `
   )
-
+  console.warn(JSON.stringify(site._rawFooterText, null, 4))
   return (
-    <Footer>
-      <Container>
-        <Content>
+    <footer className="bg-gray-200 py-12">
+      <div className="container">
+        <p className="text-gray-700 max-w-lg">
           <PortableText blocks={site._rawFooterText} />
-        </Content>
+        </p>
+
         <Content isSize="small">
-          <nav style={{ display: "grid", gridGap: 8 }}>
+          <nav className="grid gap-3 my-4">
             <Link to="/about">About</Link>
             <Link to="/cities">Cities</Link>
             <Link to="/organizations">Organizations</Link>
@@ -39,8 +40,8 @@ const MainFooter = () => {
         <Content isSize="small">
           <p>© {new Date().getFullYear()}</p>
         </Content>
-      </Container>
-    </Footer>
+      </div>
+    </footer>
   )
 }
 

@@ -16,9 +16,9 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ContactForm from "../components/contact"
 
-const About = () => (
+const ContactPage = () => (
   <Layout>
-    <SEO title="About us" />
+    <SEO title="Contact" />
     <Section className="has-background-white">
       <Container>
         <Columns>
@@ -35,4 +35,4 @@ const About = () => (
   </Layout>
 )
 
-export default About
+export default ContactPage
