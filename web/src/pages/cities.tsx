@@ -7,7 +7,7 @@ import { toKebabCase } from "../utils/toKebabCase"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CityCard from "../components/CityCard"
-import { Title } from "../components/ds/typography"
+import { Title, Subtitle, Paragraph } from "../components/ds/typography"
 
 const CitiesPage = () => {
   const { cities } = useStaticQuery(
@@ -38,10 +38,8 @@ const CitiesPage = () => {
       <Section className="has-background-white">
         <Container>
           <Title>Cities</Title>
-          <Content>
-            Our local networks are set up on the city level. Please check each
-            city page for more information.
-          </Content>
+                 <Paragraph>Please click on your city to find local support.</Paragraph>
+
           <div style={{ display: "flex", flexDirection: "column" }}>
             {cities.citiesGroupedByProvince.map(({ provinceName, cities }) => {
               return (
