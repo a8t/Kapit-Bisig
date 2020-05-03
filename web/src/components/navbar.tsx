@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Img from "gatsby-image"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
-import CallToAction from "./callToAction"
+import CallToAction, { RequestAid } from "./callToAction"
 
 const navBarClassName = `
   text-white  
@@ -116,7 +116,7 @@ const CustomNavbar: React.FC<{ siteTitle: string }> = ({ siteTitle }) => {
                         Resources
                       </Link> */}
           <div className="py-2 sm:py-0 sm:pl-2">
-            <CallToAction />
+            <RequestAid isColor="white" />
           </div>
         </nav>
       </div>

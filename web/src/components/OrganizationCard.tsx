@@ -1,8 +1,10 @@
 import React from "react"
-import { Card, CardFooter, CardHeader, CardHeaderTitle, Icon } from "bloomer"
 import Img from "gatsby-image"
 
 import Link from "../components/Link"
+import { toKebabCase } from "../utils/toKebabCase"
+import { Card } from "./ds"
+import { Icon } from "bloomer"
 
 export default function OrganizationCard({
   name,
@@ -16,29 +18,14 @@ export default function OrganizationCard({
   email,
 }) {
   return (
-    <div style={{ paddingBottom: 16 }}>
-      <Link to={website ?? phone ?? twitter ?? instagram ?? facebook ?? email}>
-        <Card
-          style={{
-            width: 192,
-          }}
-        >
-          <CardHeader>
-            <CardHeaderTitle style={{ justifyContent: "center" }}>
-              {name}
-            </CardHeaderTitle>
-          </CardHeader>
-          <CardFooter
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            {/* {cityNames.join(", ")}
-          {provinceName} */}
-            {/* lol this is kind of cursed but it works */}
+    <div className="max-w-sm">
+      <Card
+        title={<Link to={`/organizations/${toKebabCase(name)}`}>{name}</Link>}
+        titleSize="lg"
+      >
+        {/* lol this is kind of cursed but it works */}
+        {[website, phone, twitter, instagram, facebook, email].some(Boolean) ? (
+          <div className="mt-4 space-y-4">
             {Object.entries({
               website,
               phone,
@@ -47,11 +34,13 @@ export default function OrganizationCard({
               facebook,
               email,
             }).map(([type, value]) => (
-              <SocialLink type={type} value={value} />
+              <SocialLink type={type} value={value} key={value} />
             ))}
-          </CardFooter>
-        </Card>
-      </Link>
+          </div>
+        ) : (
+          <p className="text-gray-600 mt-4">Contact info coming soon</p>
+        )}
+      </Card>
     </div>
   )
 }
@@ -63,7 +52,29 @@ export function SocialLink({ type, value }) {
     twitter: "fab fa-twitter",
     instagram: "fab fa-instagram",
     facebook: "fab fa-facebook",
-    email: "fas fa-email",
+    email: "fas fa-envelope",
   }[type]
-  return value && <Icon className={`${icon} fa-sm`} />
+  const label = {
+    website: "Website",
+    phone: "Phone",
+    twitter: "Twitter",
+    instagram: "Instagram",
+    facebook: "Facebook",
+    email: "Email",
+  }[type]
+
+  const link = val => {
+    if (type === "phone") {
+      return `tel:${val}`
+    }
+
+    return val
+  }
+  return (
+    value && (
+      <Link to={link(value)} className="flex">
+        <Icon className={`${icon} fa-lg mr-2`} /> {label}
+      </Link>
+    )
+  )
 }

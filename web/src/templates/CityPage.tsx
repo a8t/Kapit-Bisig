@@ -1,25 +1,20 @@
 import React from "react"
-import { Link } from "gatsby"
-import {
-  Section,
-  Container,
-  Title,
-  Subtitle,
-  Button,
-  Icon,
-  Column,
-  Columns,
-  Content,
-} from "bloomer"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import ContactForm from "../components/contact"
-import PortableText from "../components/portableText"
 import OrganizationCard from "../components/OrganizationCard"
+import {
+  PageContainer,
+  Title,
+  Subtitle,
+  Paragraph,
+  Card,
+} from "../components/ds"
+import Link from "../components/Link"
+import { toKebabCase } from "../utils/toKebabCase"
+import { RequestAid, Volunteer } from "../components/callToAction"
 
 const CityPage = ({ pageContext }) => {
-  console.warn(pageContext)
   const {
     name,
     province: { name: provinceName },
@@ -28,44 +23,88 @@ const CityPage = ({ pageContext }) => {
     organizations,
   } = pageContext
 
-  console.warn(organizations)
+  const requestFormWithDefault = requestForm ?? "mailto:request@kapitbisig.ca"
+  const volunteerFormWithDefault =
+    volunteerForm ?? "mailto:volunteer@kapitbisig.ca"
 
   return (
     <Layout>
       <SEO title={`${name} | Kapit-Bisig Canada`} />
-      <Section className="has-background-white">
-        <Container>
-          <Columns>
-            <Column isSize="1/2">
-              {/* Page title */}
-              <Title>
-                {name}, {provinceName}
-              </Title>
-              <Content>
-                {/* {_rawContent.map(({ heading, text }) => (
+      <PageContainer>
+        <Title>
+          {/* <span className="text-gray-700 text-sm uppercase">Kapit-Bisig •</span>{" "} */}
+          {name}, {provinceName}
+        </Title>
+        {/* {_rawContent.map(({ heading, text }) => (
                   <>
                     <Title isSpaced>{heading}</Title>
                     <PortableText blocks={text} />
                   </>
                 ))} */}
-                {organizations.map(organization => (
-                  <OrganizationCard
-                    name={organization.name}
-                    cityNames={organization.cities.map(({ name }) => name)}
-                    provinceName={organization.province.name}
-                    email={organization.email}
-                    twitter={organization.twitter}
-                    facebook={organization.facebook}
-                    phone={organization.phone}
-                    website={organization.website}
-                    instagram={organization.instagram}
-                  />
-                ))}
-              </Content>
-            </Column>
-          </Columns>
-        </Container>
-      </Section>
+        <section className="max-w-lg">
+          <Card title="Get Involved">
+            <div className="grid gap-8 sm:grid-cols-2">
+              <div>
+                <p className="mb-2">To request help:</p>
+                <RequestAid
+                  isColor="primary"
+                  link={
+                    requestFormWithDefault.includes("mailto")
+                      ? `${requestFormWithDefault}?subject=Kapit-Bisig Help Requested - ${name}`
+                      : requestFormWithDefault
+                  }
+                />
+              </div>
+              <div>
+                <p className="mb-2">To volunteer:</p>
+                <Volunteer
+                  isColor="outline"
+                  link={
+                    volunteerFormWithDefault.includes("mailto")
+                      ? `${volunteerFormWithDefault}?subject=Kapit-Bisig Volunteer Signup - ${name}`
+                      : volunteerFormWithDefault
+                  }
+                />
+              </div>
+            </div>
+          </Card>
+        </section>
+
+        <section id="organizations" className="max-w-lg mt-8">
+          <Subtitle>Organizations</Subtitle>
+          <Paragraph>
+            The following organizations are participating in the Kapit-Bisig
+            Laban COVID project in {name}. For more information, please visit
+            the individual organization listing.
+          </Paragraph>
+
+          <ul className="flex flex-col space-y-2">
+            {organizations.map(organization => (
+              <Link
+                to={`/organizations/${toKebabCase(organization.name)}`}
+                as="li"
+              >
+                {organization.name}
+              </Link>
+            ))}
+          </ul>
+          {/* <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 flex-wrap">
+            {organizations.map(organization => (
+              <OrganizationCard
+                name={organization.name}
+                cityNames={organization.cities.map(({ name }) => name)}
+                provinceName={organization.province.name}
+                email={organization.email}
+                twitter={organization.twitter}
+                facebook={organization.facebook}
+                phone={organization.phone}
+                website={organization.website}
+                instagram={organization.instagram}
+              />
+            ))}
+          </div> */}
+        </section>
+      </PageContainer>
     </Layout>
   )
 }

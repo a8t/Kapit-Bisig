@@ -1,6 +1,4 @@
 import React from "react"
-import { Link as GatsbyLink } from "gatsby"
-import { Card, CardImage, CardHeader, CardHeaderTitle } from "bloomer"
 import Img from "gatsby-image"
 
 import Link from "../components/Link"

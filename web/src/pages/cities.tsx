@@ -1,7 +1,5 @@
 import React from "react"
-import { Section, Container, Content } from "bloomer"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
 
 import { toKebabCase } from "../utils/toKebabCase"
 import Layout from "../components/layout"
