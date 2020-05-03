@@ -20,7 +20,6 @@ const MainFooter = () => {
       }
     `
   )
-  console.warn(JSON.stringify(site._rawFooterText, null, 4))
   return (
     <footer className="bg-gray-200 py-12">
       <div className="container">
