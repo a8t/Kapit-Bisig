@@ -1,5 +1,5 @@
 import React from "react"
-import { Section, Container, Title, Content, Subtitle } from "bloomer"
+import { Section, Container, Content, Subtitle } from "bloomer"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
@@ -7,6 +7,7 @@ import { toKebabCase } from "../utils/toKebabCase"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CityCard from "../components/CityCard"
+import { Title } from "../components/ds/typography"
 
 const CitiesPage = () => {
   const { cities } = useStaticQuery(

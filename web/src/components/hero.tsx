@@ -1,18 +1,8 @@
-import React, { Component } from "react"
-import {
-  Hero,
-  HeroBody,
-  Container,
-  Title,
-  Button,
-  Columns,
-  Column,
-  Icon,
-  Content,
-} from "bloomer"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import CallToAction from "./callToAction"
+import { Title, Paragraph } from "./ds/typography"
 
 const KapitBisigHero = ({ siteTitle, subtitle }) => {
   const { logo } = useStaticQuery(
@@ -37,45 +27,39 @@ const KapitBisigHero = ({ siteTitle, subtitle }) => {
   )
 
   return (
-    <Hero isColor="primary" isSize="medium">
-      <HeroBody>
-        <Container>
-          <Columns>
-            <Column isSize="1/2">
-              <Img
-                fluid={logo.childImageSharp.fluid}
-                style={{ width: 400, maxWidth: "100%" }}
-                alt="Kapit-Bisig Logo"
-              />
-            </Column>
-            <Column
-              isSize="1/2"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                marginTop: 32,
-              }}
-            >
-              {/* Headline */}
-              <Title style={{ marginTop: "auto" }}>{subtitle}</Title>
+    <section className="py-20 text-white bg-blue hero">
+      <div className="container m-auto flex flex-col md:flex-row md:items-end">
+        <div className="flex-0 w-full md:w-1/2">
+          <Img
+            fluid={logo.childImageSharp.fluid}
+            style={{
+              width: 400,
+              maxWidth: "100%",
+              // objectFit: "contain",
+              // objectPosition: "bottom center",
+            }}
+            alt="Kapit-Bisig Logo"
+          />
+        </div>
+        <div className="w-full max-w-md md:w-1/2 md:max-w-full  mt-6 flex flex-col justify-start">
+          {/* Headline */}
+          <Title>{subtitle}</Title>
 
-              <Content>Kapit-Bisig means "linking arms" in Tagalog.</Content>
-              <Content>
-                Community care and mutual aid are the best way for us to
-                overcome the hardship caused by COVID-19.{" "}
-                <b>
-                  That is why we've organized Kapit-Bisig Laban COVID, a mutual
-                  aid network.
-                </b>
-              </Content>
+          <Paragraph>Kapit-Bisig means "linking arms" in Tagalog.</Paragraph>
+          <Paragraph>
+            Community care and mutual aid are the best way for us to overcome
+            the hardship caused by COVID-19.{" "}
+            <b>
+              That is why we've organized Kapit-Bisig Laban COVID, a mutual aid
+              network.
+            </b>
+          </Paragraph>
 
-              {/* Call to action button */}
-              <CallToAction size="medium" />
-            </Column>
-          </Columns>
-        </Container>
-      </HeroBody>
-    </Hero>
+          {/* Call to action button */}
+          <CallToAction size="medium" />
+        </div>
+      </div>
+    </section>
   )
 }
 

@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 import {
   Section,
   Container,
-  Title,
   Subtitle,
   Button,
   Icon,
@@ -16,6 +15,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ContactForm from "../components/contact"
 import PortableText from "../components/portableText"
+import { Title } from "../components/ds/typography"
 
 const About = ({ pageContext }) => {
   const { title, _rawContent } = pageContext.page
@@ -28,14 +28,14 @@ const About = ({ pageContext }) => {
             <Column isSize="1/2">
               {/* Page title */}
 
-              <Content>
+              <section className="py-8">
                 {_rawContent.map(({ heading, text }) => (
                   <>
                     <Title isSpaced>{heading}</Title>
                     <PortableText blocks={text} />
                   </>
                 ))}
-              </Content>
+              </section>
 
               {/* Back to homepage button */}
               <Link to="/">

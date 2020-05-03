@@ -17,9 +17,9 @@ import SEO from "../components/seo"
 
 const HOTLINE = "+1 866-275-4046"
 
-const About = () => (
+const HotlinePage = () => (
   <Layout>
-    <SEO title="About us" />
+    <SEO title="Hotline" />
     <Section className="has-background-white">
       <Container>
         <Columns>
@@ -48,4 +48,4 @@ const About = () => (
   </Layout>
 )
 
-export default About
+export default HotlinePage

@@ -30,7 +30,7 @@ const RequestPage = () => {
       }
     `
   )
-  console.log(cities)
+
   return (
     <Layout>
       <SEO title="Request | Kapit-Bisig Canada" />

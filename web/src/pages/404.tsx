@@ -1,9 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Title, Section, Container, Button, Icon, Content } from "bloomer"
+import { Section, Container, Button, Icon, Content } from "bloomer"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { Title } from "../components/ds/typography"
 
 const NotFoundPage = () => (
   <Layout>
