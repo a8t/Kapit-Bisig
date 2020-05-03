@@ -5,6 +5,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import CallToAction from "./callToAction"
 
 const navBarClassName = `
+  text-white  
   py-3
   sm:py-4
   px-2
@@ -14,12 +15,9 @@ const navBarClassName = `
   dark-mode:bg-transparent
   dark-mode:hover:bg-gray-600
   dark-mode:focus:bg-gray-600
-  dark-mode:focus:text-white
-  dark-mode:hover:text-white
   dark-mode:text-gray-200
   hover:text-gray-100
   hover:bg-blue-700
-  focus:text-white
   focus:bg-blue-900
   focus:outline-none
   focus:shadow-outline
@@ -28,7 +26,7 @@ const navBarClassName = `
 const NavbarLink = props => {
   return (
     <Link
-      activeClassName="text-white bg-blue-700"
+      activeClassName=" bg-blue-700"
       className={navBarClassName}
       {...props}
     />
@@ -78,7 +76,7 @@ const CustomNavbar: React.FC<{ siteTitle: string }> = ({ siteTitle }) => {
               }}
               alt="Kapit-Bisig Logo"
             />
-            <p className="font-display">Kapit-Bisig Canada</p>
+            <p className="font-display text-white">Kapit-Bisig Canada</p>
           </Link>
           <button
             className="rounded-lg ml-auto sm:hidden focus:outline-none focus:shadow-outline py-4"
