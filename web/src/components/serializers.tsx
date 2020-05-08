@@ -5,10 +5,6 @@ const serializers = {
   types: {
     authorReference: ({ node }) => <span>{node.author.name}</span>,
     mainImage: Figure,
-    link: ({ node }) => {
-      console.warn("hi")
-      return <a>{node}</a>
-    },
   },
 }
 

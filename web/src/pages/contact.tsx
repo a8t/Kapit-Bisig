@@ -1,37 +1,18 @@
 import React from "react"
-import { Link } from "gatsby"
-import {
-  Section,
-  Container,
-  Title,
-  Subtitle,
-  Button,
-  Icon,
-  Column,
-  Columns,
-  Content,
-} from "bloomer"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ContactForm from "../components/contact"
+import PageContainer from "../components/ds/PageContainer"
 
 const ContactPage = () => (
   <Layout>
     <SEO title="Contact" />
-    <Section className="has-background-white">
-      <Container>
-        <Columns>
-          <Column isSize="1/2">
-            {/* Page title */}
-
-            <Content>
-              <ContactForm />
-            </Content>
-          </Column>
-        </Columns>
-      </Container>
-    </Section>
+    <PageContainer>
+      <div className="max-w-md">
+        <ContactForm />
+      </div>
+    </PageContainer>
   </Layout>
 )
 

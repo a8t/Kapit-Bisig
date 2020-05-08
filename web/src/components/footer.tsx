@@ -1,5 +1,4 @@
 import React from "react"
-import { Footer, Container, Content, Icon } from "bloomer"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import PortableText from "./portableText"
 
@@ -20,7 +19,6 @@ const MainFooter = () => {
       }
     `
   )
-  console.warn(JSON.stringify(site._rawFooterText, null, 4))
   return (
     <footer className="bg-gray-200 py-12">
       <div className="container">
@@ -28,18 +26,14 @@ const MainFooter = () => {
           <PortableText blocks={site._rawFooterText} />
         </p>
 
-        <Content isSize="small">
-          <nav className="grid gap-3 my-4">
-            <Link to="/about">About</Link>
-            <Link to="/cities">Cities</Link>
-            <Link to="/organizations">Organizations</Link>
-            <Link to="/contact">Contact</Link>
-          </nav>
-        </Content>
+        <nav className="grid gap-3 my-4">
+          <Link to="/about">About</Link>
+          <Link to="/cities">Find local support</Link>
+          <Link to="/organizations">Organizations</Link>
+          <Link to="/contact">Contact</Link>
+        </nav>
 
-        <Content isSize="small">
-          <p>© {new Date().getFullYear()}</p>
-        </Content>
+        <p className="text-sm text-gray-700">© {new Date().getFullYear()}</p>
       </div>
     </footer>
   )

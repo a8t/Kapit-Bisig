@@ -1,5 +1,10 @@
 import React from "react"
 
+const colors = {
+  white: "text-white",
+  dark: "text-gray-800",
+}
+
 const mergeClassName = (props, classNamesToAdd) => {
   return {
     ...props,
@@ -7,19 +12,24 @@ const mergeClassName = (props, classNamesToAdd) => {
   }
 }
 
-export const Title = props => (
+export const Title = ({ color = "dark", ...props }) => (
   <h1
     {...mergeClassName(
       props,
-      "font-sans font-display font-bold  text-4xl mb-5"
+      `font-sans font-display font-bold text-4xl mb-5 ${colors[color]}`
     )}
   />
 )
 
-export const Subtitle = props => (
-  <h1
-    {...mergeClassName(props, "font-sans font-display font-bold text-2xl mb-2")}
+export const Subtitle = ({ color = "dark", ...props }) => (
+  <h2
+    {...mergeClassName(
+      props,
+      `font-sans font-display font-bold text-2xl mb-2 ${colors[color]}`
+    )}
   />
 )
 
-export const Paragraph = props => <p {...mergeClassName(props, "mb-6")} />
+export const Paragraph = ({ color = "dark", ...props }) => (
+  <p {...mergeClassName(props, `mb-6 ${colors[color]}`)} />
+)

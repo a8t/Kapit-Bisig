@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import CallToAction from "./callToAction"
+import CallToAction, { RequestAid } from "./callToAction"
 import { Title, Paragraph } from "./ds/typography"
 
 const KapitBisigHero = ({ siteTitle, subtitle }) => {
@@ -41,12 +41,14 @@ const KapitBisigHero = ({ siteTitle, subtitle }) => {
             alt="Kapit-Bisig Logo"
           />
         </div>
-        <div className="w-full max-w-md md:w-1/2 md:max-w-full  mt-6 flex flex-col justify-start">
+        <div className="w-full max-w-md md:w-1/2 md:max-w-full text-white mt-6 flex flex-col justify-start">
           {/* Headline */}
-          <Title>{subtitle}</Title>
+          <Title color="white">{subtitle}</Title>
 
-          <Paragraph>Kapit-Bisig means "linking arms" in Tagalog.</Paragraph>
-          <Paragraph>
+          <Paragraph color="white">
+            Kapit-Bisig means "linking arms" in Tagalog.
+          </Paragraph>
+          <Paragraph color="white">
             Community care and mutual aid are the best way for us to overcome
             the hardship caused by COVID-19.{" "}
             <b>
@@ -56,7 +58,7 @@ const KapitBisigHero = ({ siteTitle, subtitle }) => {
           </Paragraph>
 
           {/* Call to action button */}
-          <CallToAction size="medium" />
+          <RequestAid isColor="outline" />
         </div>
       </div>
     </section>

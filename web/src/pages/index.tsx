@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Hero from "../components/hero"
 import { RequestAid, Volunteer } from "../components/callToAction"
-import { Title, Subtitle, Paragraph } from "../components/ds/typography"
+import { Card, Title } from "../components/ds"
 
 export const query = graphql`
   fragment SanityImage on SanityImage {
@@ -42,15 +42,6 @@ export const query = graphql`
     }
   }
 `
-
-const Card = ({ title, children }) => {
-  return (
-    <div className="rounded border border-gray-300 shadow-lg">
-      <Subtitle className="p-4 py-2 bg-gray-200">{title}</Subtitle>
-      <Paragraph className="px-4">{children}</Paragraph>
-    </div>
-  )
-}
 
 const IndexPage = ({ data }) => {
   const { site } = data

@@ -5,6 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { fab } from "@fortawesome/free-brands-svg-icons"
+import { fas } from "@fortawesome/free-solid-svg-icons"
+
+library.add(fab, fas)
+
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
@@ -24,9 +30,9 @@ const Layout = ({ children }) => {
   return (
     <>
       {/* Wrapper for sticky footer */}
-      <div className="site">
+      <div className="min-h-screen flex flex-col">
         <Navbar siteTitle={data.site.title} />
-        <main className="site-content">{children}</main>
+        <main className="flex-grow overflow-hidden">{children}</main>
         <MainFooter />
       </div>
     </>

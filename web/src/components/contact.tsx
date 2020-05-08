@@ -1,31 +1,52 @@
 import React from "react"
 import { Link } from "gatsby"
-import {
-  Subtitle,
-  Button,
-  Field,
-  Label,
-  Control,
-  TextArea,
-  Input,
-  Box,
-} from "bloomer"
-
+import { Subtitle, Paragraph } from "./ds/typography"
 const BoldLink = props => <a style={{ fontWeight: "bold" }} {...props} />
+
+const Field = ({ children }) => {
+  return <div className="mb-4" children={children} />
+}
+
+const Label = props => {
+  return (
+    <label
+      {...props}
+      className="block text-gray-700 text-sm font-bold mb-2"
+    ></label>
+  )
+}
+
+const Input = props => {
+  return (
+    <input
+      {...props}
+      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+    ></input>
+  )
+}
+
+const TextArea = props => {
+  return (
+    <textarea
+      {...props}
+      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+    ></textarea>
+  )
+}
 
 export default function ContactForm() {
   return (
     <>
       <Subtitle>Contact Us</Subtitle>
 
-      <p>
+      <Paragraph>
         If you have urgent inquiries, please contact us at our{" "}
         <Link to="/hotline" style={{ fontWeight: "bold" }}>
           24/7 volunteer hotline
         </Link>
         .
-      </p>
-      <p>
+      </Paragraph>
+      <Paragraph>
         If you have questions or inquiries outside of our{" "}
         <BoldLink href="https://bit.ly/kapitbisigto-needs">
           help request form
@@ -35,7 +56,7 @@ export default function ContactForm() {
           volunteer signup form
         </BoldLink>
         , please continue to fill out the form below.
-      </p>
+      </Paragraph>
       <form
         name="contact"
         method="post"
@@ -51,45 +72,35 @@ export default function ContactForm() {
         <Field>
           <Label>Your name</Label>
 
-          <Control>
-            <Input
-              isColor="primary"
-              type="text"
-              placeholder="Name"
-              name="name"
-            />
-          </Control>
+          <Input isColor="primary" type="text" placeholder="Name" name="name" />
         </Field>
 
         <Field>
           <Label>Your email</Label>
-          <Control>
-            <Input
-              isColor="primary"
-              type="text"
-              placeholder="name@example.com"
-              name="email"
-            />
-          </Control>
+          <Input
+            isColor="primary"
+            type="text"
+            placeholder="name@example.com"
+            name="email"
+          />
         </Field>
 
         <Field>
           <Label>Message</Label>
-          <Control>
-            <TextArea
-              className={"is-primary"}
-              placeholder="Your message"
-              name="message"
-            />
-          </Control>
+          <TextArea
+            className={"is-primary"}
+            placeholder="Your message"
+            name="message"
+          />
         </Field>
 
         <Field>
-          <Control>
-            <Button isColor="success" type="submit">
-              Submit
-            </Button>
-          </Control>
+          <button
+            className="bg-blue-500 hover:bg-blue-300 focus:bg-blue-300 text-white px-4 py-2 border-r-3 rounded-full"
+            type="submit"
+          >
+            Submit
+          </button>
         </Field>
       </form>
     </>

@@ -7,6 +7,7 @@ const PortableText = ({ blocks }) => (
   <BasePortableText
     blocks={blocks}
     serializers={serializers}
+    className="space-y-4"
     {...clientConfig.sanity}
   />
 )
