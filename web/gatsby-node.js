@@ -129,9 +129,8 @@ exports.createPages = async ({ graphql, actions }) => {
         province,
         requestForm,
         volunteerForm,
-        organizations: organizations.nodes.filter(
-          ({ province: organizationProvince }) =>
-            province.name === organizationProvince.name
+        organizations: organizations.nodes.filter(({ cities }) =>
+          cities.map(({ name }) => name).includes(name)
         ),
       },
     })
