@@ -1,5 +1,6 @@
 import React from "react"
-import { Icon } from "bloomer"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 import Link from "./Link"
 
 const colors = {
@@ -31,7 +32,7 @@ export const RequestAid: React.FC<{
       to={link}
       label="Request help"
       isColor={isColor}
-      icon={<Icon className={`fas fa-hands-helping fa-sm `} />}
+      icon={<FontAwesomeIcon icon="hands-helping" />}
     />
   )
 }
@@ -45,7 +46,7 @@ export const Volunteer: React.FC<{
       to={link}
       label="Volunteer"
       isColor={isColor}
-      icon={<Icon className={`fas fa-hand-holding-heart fa-sm `} />}
+      icon={<FontAwesomeIcon icon="hand-holding-heart" />}
     />
   )
 }

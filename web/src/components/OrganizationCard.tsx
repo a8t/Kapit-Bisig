@@ -1,10 +1,10 @@
 import React from "react"
-import Img from "gatsby-image"
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Link from "../components/Link"
 import { toKebabCase } from "../utils/toKebabCase"
 import { Card } from "./ds"
-import { Icon } from "bloomer"
 
 export default function OrganizationCard({
   name,
@@ -47,13 +47,14 @@ export default function OrganizationCard({
 
 export function SocialLink({ type, value }) {
   const icon = {
-    website: "fas fa-globe-americas",
-    phone: "fas fa-phone",
-    twitter: "fab fa-twitter",
-    instagram: "fab fa-instagram",
-    facebook: "fab fa-facebook",
-    email: "fas fa-envelope",
+    website: ["fas", "globe-americas"],
+    email: ["fas", "envelope-square"],
+    phone: ["fas", "phone"],
+    twitter: ["fab", "twitter"],
+    instagram: ["fab", "instagram"],
+    facebook: ["fab", "facebook-square"],
   }[type]
+
   const label = {
     website: "Website",
     phone: "Phone",
@@ -73,7 +74,7 @@ export function SocialLink({ type, value }) {
   return (
     value && (
       <Link to={link(value)} className="flex">
-        <Icon className={`${icon} fa-lg mr-2`} /> {label}
+        <FontAwesomeIcon icon={icon} /> {label}
       </Link>
     )
   )
