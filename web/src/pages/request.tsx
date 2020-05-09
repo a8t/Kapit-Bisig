@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CityCard from "../components/CityCard"
 import { Title, Subtitle, Paragraph } from "../components/ds/typography"
+import Link from "../components/Link"
 
 const RequestPage = () => {
   const { cities } = useStaticQuery(
@@ -36,7 +37,9 @@ const RequestPage = () => {
       <section className="container py-8">
         <Title>Help Request</Title>
         <Paragraph>
-          Select your city to request help. More are coming soon.
+          Select your city to request help. More are coming soon. Please{" "}
+          <Link to="/contact">contact us</Link> if you'd like us to notify you
+          when your city is available.
         </Paragraph>
 
         <div style={{ display: "flex", flexDirection: "column" }}>

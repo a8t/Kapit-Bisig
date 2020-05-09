@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PageContainer from "../components/ds/PageContainer"
-import { Title } from "../components/ds/typography"
+import { Title, Subtitle } from "../components/ds/typography"
 
 const HOTLINE = "+1 866-275-4046"
 
@@ -24,8 +24,11 @@ const HotlinePage = () => (
 
         <p>
           If you have an emergency and you urgently need to get some help, you
-          can contact us at <a href={`tel:${HOTLINE}`}>{HOTLINE}</a>.
+          can contact us at:
         </p>
+        <Subtitle>
+          <a href={`tel:${HOTLINE}`}>{HOTLINE}</a>
+        </Subtitle>
       </div>
     </PageContainer>
   </Layout>

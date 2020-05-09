@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CityCard from "../components/CityCard"
 import { Title, Subtitle, Paragraph } from "../components/ds/typography"
+import Link from "../components/Link"
 
 const VolunteerPage = () => {
   const { cities } = useStaticQuery(
@@ -37,6 +38,8 @@ const VolunteerPage = () => {
         <Title>Volunteer registration</Title>
         <Paragraph>
           Select the city closest to you to register. More are coming soon.
+          Please <Link to="/contact">contact us</Link> if you'd like us to
+          notify you when your city is available.
         </Paragraph>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
