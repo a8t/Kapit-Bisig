@@ -41,19 +41,22 @@ const KapitBisigHero = ({ siteTitle, subtitle }) => {
             alt="Kapit-Bisig Logo"
           />
         </div>
-        <div className="w-full max-w-md md:w-1/2 md:max-w-full text-white mt-6 flex flex-col justify-start">
+        <div className="w-full max-w-md md:w-1/2 md:max-w-sm text-white mt-6 flex flex-col justify-start">
           {/* Headline */}
           <Title color="white">{subtitle}</Title>
 
-          <Paragraph color="white">
+          <Paragraph className=" text-md" color="white">
             Kapit-Bisig means "linking arms" in Tagalog.
           </Paragraph>
-          <Paragraph color="white">
+          <Paragraph className=" text-md" color="white">
             Community care and mutual aid are the best way for us to overcome
-            the hardship caused by COVID-19.{" "}
+            the hardship caused by COVID-19.
+          </Paragraph>
+          <Paragraph className=" text-lg" color="white">
+            That is why we've organized{" "}
             <b>
-              That is why we've organized Kapit-Bisig Laban COVID, a mutual aid
-              network.
+              Kapit-Bisig Laban COVID, a mutual aid network for all Filipinos in
+              Canada.
             </b>
           </Paragraph>
 
