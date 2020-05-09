@@ -13,6 +13,7 @@ import {
 import Link from "../components/Link"
 import { toKebabCase } from "../utils/toKebabCase"
 import { RequestAid, Volunteer } from "../components/callToAction"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const CityPage = ({ pageContext }) => {
   const {
@@ -71,24 +72,29 @@ const CityPage = ({ pageContext }) => {
         </section>
 
         <section id="organizations" className="max-w-lg mt-8">
-          <Subtitle>Organizations</Subtitle>
-          <Paragraph>
-            The following organizations are participating in the Kapit-Bisig
-            Laban COVID project in {name}. For more information, please visit
-            the individual organization listing.
-          </Paragraph>
+          <Card title="Organizations">
+            <Paragraph>
+              The following organizations are participating in the Kapit-Bisig
+              Laban COVID project in {name}. For more information, please visit
+              the individual organization listing.
+            </Paragraph>
 
-          <ul className="flex flex-col space-y-2">
-            {organizations.map(organization => (
-              <Link
-                to={`/organizations/${toKebabCase(organization.name)}`}
-                as="li"
-              >
-                {organization.name}
-              </Link>
-            ))}
-          </ul>
-          {/* <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 flex-wrap">
+            <ul className="flex flex-col space-y-2">
+              {organizations.map(organization => (
+                <Link
+                  to={`/organizations/${toKebabCase(organization.name)}`}
+                  as="li"
+                  className="group self-start"
+                >
+                  <FontAwesomeIcon
+                    icon="arrow-right"
+                    className="mr-2 text-blue-400"
+                  />
+                  {organization.name}
+                </Link>
+              ))}
+            </ul>
+            {/* <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 flex-wrap">
             {organizations.map(organization => (
               <OrganizationCard
                 name={organization.name}
@@ -103,6 +109,7 @@ const CityPage = ({ pageContext }) => {
               />
             ))}
           </div> */}
+          </Card>
         </section>
       </PageContainer>
     </Layout>
