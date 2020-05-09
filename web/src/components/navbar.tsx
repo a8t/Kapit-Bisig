@@ -12,10 +12,6 @@ const navBarClassName = `
   md:px-4
   font-semibold
   bg-transparent
-  dark-mode:bg-transparent
-  dark-mode:hover:bg-gray-600
-  dark-mode:focus:bg-gray-600
-  dark-mode:text-gray-200
   hover:text-gray-100
   hover:bg-blue-700
   focus:bg-blue-900
@@ -67,7 +63,7 @@ const CustomNavbar: React.FC<{ siteTitle: string }> = ({ siteTitle }) => {
         <div className="flex flex-row p-x-4 items-center justify-between ">
           <Link
             to="/"
-            className="text-lg font-light tracking-widest rounded-lg dark-mode:text-white focus:outline-none flex items-center space-x-2"
+            className="text-lg font-light tracking-widest rounded-lg focus:outline-none flex items-center space-x-2"
           >
             <Img
               fluid={icon.childImageSharp.fluid}
@@ -107,7 +103,7 @@ const CustomNavbar: React.FC<{ siteTitle: string }> = ({ siteTitle }) => {
           <NavbarLink to="/about">About</NavbarLink>
 
           <NavbarLink to="/contact">Contact</NavbarLink>
-          <NavbarLink to="/hotline">Hotline</NavbarLink>
+          <NavbarLink to="/hotline">24/7 Hotline</NavbarLink>
           {/* <Link
                         to="/resources"
 
