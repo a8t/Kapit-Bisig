@@ -48,11 +48,11 @@ export default function OrganizationCard({
 export function SocialLink({ type, value }) {
   const icon = {
     website: ["fas", "globe-americas"],
-    email: ["fas", "envelope-square"],
+    email: ["fas", "envelope"],
     phone: ["fas", "phone"],
     twitter: ["fab", "twitter"],
     instagram: ["fab", "instagram"],
-    facebook: ["fab", "facebook-square"],
+    facebook: ["fab", "facebook"],
   }[type]
 
   const label = {
@@ -73,8 +73,8 @@ export function SocialLink({ type, value }) {
   }
   return (
     value && (
-      <Link to={link(value)} className="flex">
-        <FontAwesomeIcon icon={icon} /> {label}
+      <Link to={link(value)} className="flex items-center">
+        <FontAwesomeIcon icon={icon} className="mr-2" /> {label}
       </Link>
     )
   )
