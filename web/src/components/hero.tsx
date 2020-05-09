@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import CallToAction, { RequestAid } from "./callToAction"
+import { RequestAid } from "./callToAction"
 import { Title, Paragraph } from "./ds/typography"
 
 const KapitBisigHero = ({ siteTitle, subtitle }) => {
@@ -27,7 +27,7 @@ const KapitBisigHero = ({ siteTitle, subtitle }) => {
   )
 
   return (
-    <section className="py-20 text-white bg-blue hero">
+    <section className="py-20 sm:py-48 xl:py-56 text-white bg-blue hero">
       <div className="container m-auto flex flex-col md:flex-row md:items-end">
         <div className="flex-0 w-full md:w-1/2">
           <Img

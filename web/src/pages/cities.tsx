@@ -35,7 +35,9 @@ const CitiesPage = () => {
       <SEO title="Cities | Kapit-Bisig Canada" />
       <section className="container py-8">
         <Title>Cities</Title>
-        <Paragraph>Please click on your city to find local support.</Paragraph>
+        <Paragraph>
+          Please click on your city to get involved locally.
+        </Paragraph>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           {cities.citiesGroupedByProvince.map(({ provinceName, cities }) => {

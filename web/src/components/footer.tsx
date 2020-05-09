@@ -27,10 +27,9 @@ const MainFooter = () => {
         </p>
 
         <nav className="grid gap-3 my-4">
+          <Link to="/cities">Get Involved Locally</Link>
+          <Link to="/organizations">Who's Involved?</Link>
           <Link to="/about">About</Link>
-          <Link to="/cities">Find local support</Link>
-          <Link to="/volunteer">Volunteer</Link>
-          <Link to="/organizations">Organizations</Link>
           <Link to="/contact">Contact</Link>
         </nav>
 

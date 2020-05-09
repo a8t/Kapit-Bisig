@@ -2,6 +2,7 @@ import React from "react"
 
 const colors = {
   white: "text-white",
+  medium: "text-gray-600",
   dark: "text-gray-800",
 }
 

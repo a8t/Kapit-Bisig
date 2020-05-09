@@ -11,9 +11,9 @@ const colors = {
 
 const CTAButton = ({ to, label, icon, isColor = "outline" }) => {
   return (
-    <Link to={to}>
+    <Link to={to} className="self-start">
       <button
-        className={`px-4 py-1 rounded-full flex flex-row ${colors[isColor]}`}
+        className={`px-4 py-1 rounded-full flex flex-row  ${colors[isColor]}`}
       >
         {/* Call to action button icon */}
         <span>{label}</span>
@@ -26,11 +26,11 @@ const CTAButton = ({ to, label, icon, isColor = "outline" }) => {
 export const RequestAid: React.FC<{
   isColor: keyof typeof colors
   link?: string
-}> = ({ isColor, link = "/request" }) => {
+}> = ({ isColor, link = "/cities" }) => {
   return (
     <CTAButton
       to={link}
-      label="Request help"
+      label="Join Now"
       isColor={isColor}
       icon={<FontAwesomeIcon icon="hands-helping" />}
     />
