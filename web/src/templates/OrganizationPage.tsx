@@ -34,16 +34,18 @@ const OrganizationPage = ({ pageContext }) => {
             </>
           ))}
 
-        {Object.entries({
-          website,
-          phone,
-          twitter,
-          instagram,
-          facebook,
-          email,
-        }).map(([type, value]) => (
-          <SocialLink type={type} value={value} />
-        ))}
+        <div className="space-y-2">
+          {Object.entries({
+            website,
+            phone,
+            twitter,
+            instagram,
+            facebook,
+            email,
+          }).map(([type, value]) => (
+            <SocialLink type={type} value={value} />
+          ))}
+        </div>
       </PageContainer>
     </Layout>
   )
