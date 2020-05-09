@@ -8,6 +8,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Title, Subtitle } from "../components/ds/typography"
 import PageContainer from "../components/ds/PageContainer"
+import { sortProvinces } from "../utils/sortProvinces"
 
 const OrganizationsPage = ({}) => {
   const { query } = useStaticQuery(
@@ -50,7 +51,7 @@ const OrganizationsPage = ({}) => {
           At this time, {query.totalCount} organizations are involved.
         </p>
 
-        {query.organizationsGroupedByProvince.map(
+        {sortProvinces(query.organizationsGroupedByProvince).map(
           ({ provinceName, organizations }) => {
             return (
               <OrganizationsByProvince

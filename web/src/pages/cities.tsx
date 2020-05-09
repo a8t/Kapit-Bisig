@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CityCard from "../components/CityCard"
 import { Title, Subtitle, Paragraph } from "../components/ds/typography"
+import { sortProvinces } from "../utils/sortProvinces"
 
 const CitiesPage = () => {
   const { cities } = useStaticQuery(
@@ -40,29 +41,31 @@ const CitiesPage = () => {
         </Paragraph>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
-          {cities.citiesGroupedByProvince.map(({ provinceName, cities }) => {
-            return (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  paddingBottom: 32,
-                }}
-              >
-                <Subtitle>{provinceName}</Subtitle>
-                {cities.map(city => {
-                  return (
-                    <CityCard
-                      name={city.name}
-                      provinceName={provinceName}
-                      cityLogoAssetFluid={city.cityLogo?.asset.fluid}
-                      link={`/cities/${toKebabCase(city.name)}`}
-                    />
-                  )
-                })}
-              </div>
-            )
-          })}
+          {sortProvinces(cities.citiesGroupedByProvince).map(
+            ({ provinceName, cities }) => {
+              return (
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    paddingBottom: 32,
+                  }}
+                >
+                  <Subtitle>{provinceName}</Subtitle>
+                  {cities.map(city => {
+                    return (
+                      <CityCard
+                        name={city.name}
+                        provinceName={provinceName}
+                        cityLogoAssetFluid={city.cityLogo?.asset.fluid}
+                        link={`/cities/${toKebabCase(city.name)}`}
+                      />
+                    )
+                  })}
+                </div>
+              )
+            }
+          )}
         </div>
       </section>
     </Layout>
