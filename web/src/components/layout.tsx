@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
       {/* Wrapper for sticky footer */}
       <div className="min-h-screen flex flex-col">
         <Navbar siteTitle={data.site.title} />
-        <main className="flex-grow overflow-hidden">{children}</main>
+        <main className="flex-grow">{children}</main>
         <MainFooter />
       </div>
     </>

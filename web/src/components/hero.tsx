@@ -27,7 +27,10 @@ const KapitBisigHero = ({ siteTitle, subtitle }) => {
   )
 
   return (
-    <section className="py-20 sm:py-48 xl:py-56 text-white bg-blue hero">
+    <section
+      className="py-20 sm:py-48 xl:pb-56 md:max-height-90vh flex items-center text-white hero"
+      style={{ minHeight: 800, height: "100%" }}
+    >
       <div className="container m-auto flex flex-col md:flex-row md:items-end">
         <div className="flex-0 w-full md:w-1/2">
           <Img

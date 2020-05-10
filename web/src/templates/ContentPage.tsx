@@ -7,7 +7,7 @@ import { Title } from "../components/ds/typography"
 
 const ContentPage = ({ pageContext }) => {
   const { title, _rawContent } = pageContext.page
-  console.warn(_rawContent)
+
   return (
     <Layout>
       <SEO title={title} />

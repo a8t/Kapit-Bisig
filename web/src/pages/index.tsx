@@ -99,12 +99,14 @@ const IndexPage = ({ data }) => {
             ></polygon>
           </svg>
         </div>
-        <div className="container -mt-2 flex flex-col md:flex-row items-start space-y-8  sm:mb-12">
-          <div className="w-full  lg:w-1/3 -mt-16 sm:-mt-20 lg:-mt-24 xl:-mt-32 sm:mr-20">
+        <div className="container -mt-2 flex flex-col md:flex-row items-start m:mb-12">
+          <div className="w-full md:w-5/12 xl:w-1/3 -mt-16 sm:-mt-20 lg:-mt-24 xl:-mt-32 ">
             <JoinNetworkCard />
           </div>
-          <section className="w-full sm:w-auto lg:w-1/2 flex flex-col md:ml-auto">
-            <Title color="medium">Join Kapit-Bisig today.</Title>
+          <section className="w-full mx-auto md:mx-0 mt-20 md:mt-0 md:w-1/2 sm:w-auto lg:w-1/2 flex flex-col md:ml-auto">
+            <Title color="medium" className="mb-10 md:mb-8">
+              Join Kapit-Bisig today.
+            </Title>
             <ul
               className="grid md:grid-cols-2 gap-8"
               style={{ height: "min-content" }}
