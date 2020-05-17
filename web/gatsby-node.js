@@ -44,11 +44,8 @@ exports.createPages = async ({ graphql, actions }) => {
         nodes {
           _id
           name
-          cities {
-            name
           }
         }
-      }
 
       cities: allSanityCity {
         nodes {
