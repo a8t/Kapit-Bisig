@@ -44,7 +44,7 @@ const CityPage = ({ pageContext }) => {
                   </>
                 ))} */}
         <section className="max-w-lg">
-        { if name == 'Toronto' ?
+        {name == 'Toronto' ?
         <Card title="Get Involved">
           <div className="grid gap-8 sm:grid-cols-1">
             <div>
