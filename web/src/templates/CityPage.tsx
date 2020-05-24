@@ -46,11 +46,12 @@ const CityPage = ({ pageContext }) => {
         <section className="max-w-lg">
         {name == 'Toronto' ?
         <Card title="Get Involved">
+          <Paragraph>
+            At this current moment, we are unable to accept new member requests. Please come back at a later date. We are doing our best to meet everyone's needs and will be accepting member registration again soon.
+          </Paragraph>
           <div className="grid gap-8 sm:grid-cols-1">
             <div>
-              <p className="mb-2">
-              At this current moment, we are unable to accept new member requests. Please come back at a later date. We are doing our best to meet everyone's needs and will be accepting member registration again soon.
-              </p>
+              <p className="mb-2"><a href="https://actionnetwork.org/groups/kapit-bisig-canada" target="_new">Donate</a></p>
             </div>
           </div>
         </Card>
