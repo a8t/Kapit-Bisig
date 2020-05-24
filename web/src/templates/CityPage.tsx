@@ -18,6 +18,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 const CityPage = ({ pageContext }) => {
   const {
     name,
+    cities,
     province: { name: provinceName },
     requestForm,
     volunteerForm,
@@ -43,32 +44,43 @@ const CityPage = ({ pageContext }) => {
                   </>
                 ))} */}
         <section className="max-w-lg">
-          <Card title="Get Involved">
-            <div className="grid gap-8 sm:grid-cols-2">
-              <div>
-                <p className="mb-2">To request help:</p>
-                <RequestAid
-                  isColor="primary"
-                  link={
-                    requestFormWithDefault.includes("mailto")
-                      ? `${requestFormWithDefault}?subject=Kapit-Bisig Help Requested - ${name}`
-                      : requestFormWithDefault
-                  }
-                />
-              </div>
-              <div>
-                <p className="mb-2">To volunteer:</p>
-                <Volunteer
-                  isColor="outline"
-                  link={
-                    volunteerFormWithDefault.includes("mailto")
-                      ? `${volunteerFormWithDefault}?subject=Kapit-Bisig Volunteer Signup - ${name}`
-                      : volunteerFormWithDefault
-                  }
-                />
-              </div>
+        { if name == 'Toronto' ?
+        <Card title="Get Involved">
+          <div className="grid gap-8 sm:grid-cols-1">
+            <div>
+              <p className="mb-2">
+              At this current moment, we are unable to accept new member requests. Please come back at a later date. We are doing our best to meet everyone's needs and will be accepting member registration again soon.
+              </p>
             </div>
-          </Card>
+          </div>
+        </Card>
+        :
+        <Card title="Get Involved">
+          <div className="grid gap-8 sm:grid-cols-2">
+            <div>
+              <p className="mb-2">To request help:</p>
+              <RequestAid
+                isColor="primary"
+                link={
+                  requestFormWithDefault.includes("mailto")
+                    ? `${requestFormWithDefault}?subject=Kapit-Bisig Help Requested - ${name}`
+                    : requestFormWithDefault
+                }
+              />
+            </div>
+            <div>
+              <p className="mb-2">To volunteer:</p>
+              <Volunteer
+                isColor="outline"
+                link={
+                  volunteerFormWithDefault.includes("mailto")
+                    ? `${volunteerFormWithDefault}?subject=Kapit-Bisig Volunteer Signup - ${name}`
+                    : volunteerFormWithDefault
+              />
+            </div>
+          </div>
+        </Card>
+        }
         </section>
 
         <section id="organizations" className="max-w-lg mt-8">
