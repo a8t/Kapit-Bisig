@@ -17,7 +17,7 @@ const CTAButton = ({ to, label, icon, isColor = "outline" }) => {
       >
         {/* Call to action button icon */}
         <span>{label}</span>
-        <div className="ml-2">{icon}</div>
+        {/* <div className="ml-2">{icon}</div> */}
       </button>
     </Link>
   )
