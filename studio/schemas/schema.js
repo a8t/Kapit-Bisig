@@ -12,6 +12,10 @@ import city from './documents/city'
 import organization from './documents/organization'
 import province from './documents/province'
 
+// Post document types
+import category from './documents/posts/category'
+import post from './documents/posts/post'
+
 // Object types
 import cta from './objects/cta'
 import embedHTML from './objects/embedHTML'
@@ -49,6 +53,10 @@ export default createSchema({
     route,
     city,
     organization,
-    province
+    province,
+
+    // post stuff
+    category,
+    post
   ])
 })
