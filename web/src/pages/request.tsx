@@ -1,27 +1,27 @@
 import React from "react"
-import { Section, Container, Title, Content } from "bloomer"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CityCard from "../components/CityCard"
+import { Title, Subtitle, Paragraph } from "../components/ds/typography"
+import Link from "../components/Link"
 
 const RequestPage = () => {
   const { cities } = useStaticQuery(
     graphql`
       query RequestPageQuery {
         cities: allSanityCity {
-          nodes {
-            name
-            province {
+          citiesGroupedByProvince: group(field: province___name) {
+            provinceName: fieldValue
+            cities: nodes {
               name
-            }
-            requestForm
-            cityLogo {
-              asset {
-                fluid(maxWidth: 700) {
-                  ...GatsbySanityImageFluid
+              requestForm
+              cityLogo {
+                asset {
+                  fluid(maxWidth: 700) {
+                    ...GatsbySanityImageFluid
+                  }
                 }
               }
             }
@@ -30,28 +30,44 @@ const RequestPage = () => {
       }
     `
   )
-  console.log(cities)
+
   return (
     <Layout>
       <SEO title="Request | Kapit-Bisig Canada" />
-      <Section className="has-background-white">
-        <Container>
-          <Title>Help request</Title>
-          <Content>
-            Select your city to request help. More are coming soon.
-          </Content>
-          {cities.nodes.map(city => {
+      <section className="container py-8">
+        <Title>Help Request</Title>
+        <Paragraph>
+          Select your city to request help. More are coming soon. Please{" "}
+          <Link to="/contact">contact us</Link> if you'd like us to notify you
+          when your city is available.
+        </Paragraph>
+
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {cities.citiesGroupedByProvince.map(({ provinceName, cities }) => {
             return (
-              <CityCard
-                name={city.name}
-                provinceName={city.province.name}
-                cityLogoAssetFluid={city.cityLogo?.asset.fluid}
-                link={city.requestForm}
-              />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  paddingBottom: 32,
+                }}
+              >
+                <Subtitle>{provinceName}</Subtitle>
+                {cities.map(city => {
+                  return (
+                    <CityCard
+                      name={city.name}
+                      provinceName={provinceName}
+                      cityLogoAssetFluid={city.cityLogo?.asset.fluid}
+                      link={city.requestForm}
+                    />
+                  )
+                })}
+              </div>
             )
           })}
-        </Container>
-      </Section>
+        </div>
+      </section>
     </Layout>
   )
 }

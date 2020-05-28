@@ -1,8 +1,9 @@
 module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint"],
+  plugins: ["@typescript-eslint", "prettier"],
   extends: [
+    "prettier",
     "standard",
     "standard-react",
     "plugin:import/errors",
@@ -13,6 +14,7 @@ module.exports = {
   rules: {
     "react/prop-types": 0,
     "object-curly-spacing": ["error", "never"],
+    "prettier/prettier": ["error"],
   },
   settings: {
     react: {

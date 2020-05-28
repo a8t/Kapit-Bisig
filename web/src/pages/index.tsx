@@ -1,33 +1,17 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { Link, graphql } from "gatsby"
-import {
-  Container,
-  Title,
-  Column,
-  Content,
-  Button,
-  Icon,
-  Card,
-  CardHeader,
-  CardContent,
-  Columns,
-  CardHeaderTitle,
-  Section,
-} from "bloomer"
+import { graphql } from "gatsby"
 
-import {
-  mapEdgesToNodes,
-  filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture,
-} from "../lib/helpers"
 import Layout from "../components/layout"
-import GraphQLErrorList from "../components/graphql-error-list"
 
 import SEO from "../components/seo"
 import Hero from "../components/hero"
+import JoinNetworkCard from "../components/JoinNetworkCard"
 import { RequestAid, Volunteer } from "../components/callToAction"
-import ContactForm from "../components/contact"
+import { Card, Title, Subtitle, Paragraph } from "../components/ds"
+import {
+  FontAwesomeIcon,
+  FontAwesomeIconProps,
+} from "@fortawesome/react-fontawesome"
 
 export const query = graphql`
   fragment SanityImage on SanityImage {
@@ -64,9 +48,28 @@ export const query = graphql`
   }
 `
 
-const SectionWithSpacing = props => {
-  return <section style={{ paddingTop: 32, paddingBottom: 32 }} {...props} />
-}
+const whyItems = [
+  {
+    title: "Lend a hand",
+    text: "Help deliver urgently needed resources and services",
+    icon: "hand-holding-heart",
+  },
+  {
+    title: "Get informed",
+    text: "Gather and disseminate important information",
+    icon: "info-circle",
+  },
+  {
+    title: "Engage peers",
+    text: "Bring a campaign of collective care for everyone",
+    icon: "user-friends",
+  },
+  {
+    title: "Build together",
+    text: "Collaborate with grassroots orgs  and service institutions",
+    icon: "users",
+  },
+]
 
 const IndexPage = ({ data }) => {
   const { site } = data
@@ -75,89 +78,82 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO title="Kapit-Bisig" />
       <Hero siteTitle={site.title} subtitle={site.subtitle} />
-      <Section>
-        <Container>
-          <Title>How does it work?</Title>
-
-          <Columns>
-            <Column isSize="1/2">
-              <p>
-                To sign up for the Kapit-Bisig COVID Response mutual aid
-                network, you can fill out one of the two forms below.
-              </p>
-            </Column>
-          </Columns>
-
-          <Columns>
-            <Column isSize="1/2">
-              <Card>
-                <CardHeader>
-                  <CardHeaderTitle>I need help</CardHeaderTitle>
-                </CardHeader>
-                <CardContent>
-                  <Content>
-                    I'm going through some hard times. I'm struggling
-                    financially, emotionally, or physically. I'm facing loss of
-                    work or other hardship.
-                    <div style={{ marginTop: 16 }}></div>
-                    <RequestAid isColor="primary" />
-                  </Content>
-                </CardContent>
-              </Card>
-            </Column>
-            <Column isSize="1/2">
-              <Card>
-                <CardHeader>
-                  <CardHeaderTitle>I want to help</CardHeaderTitle>
-                </CardHeader>
-                <CardContent>
-                  <Content>
-                    I have additional means. I can offer time, resources,
-                    skills, or knowledge. I want to give back to my community.
-                    <div style={{ marginTop: 16 }}></div>
-                    <Volunteer isColor="primary" />
-                  </Content>
-                </CardContent>
-              </Card>
-            </Column>
-          </Columns>
-          <Columns>
-            <Column isSize="1/2">
-              <Content>
-                <SectionWithSpacing>
-                  <h3>Who are we?</h3>
-                  <p>
-                    We are a group of Filipinos, allies, and concerned community
-                    members. We are women, youth, students, migrants, workers,
-                    professionals, and church people.{" "}
-                    <b>We knew that we would have to come together</b> to
-                    weather the storm of the COVID-19 pandemic.
-                  </p>
-                  <Link to="/about">
-                    <Button isOutlined className="is-rounded" id="is-spaced">
-                      <span>Learn more</span>
-                      <Icon className="fa fa-arrow-right fa-sm" />
-                    </Button>
-                  </Link>
-                </SectionWithSpacing>
-
-                <SectionWithSpacing>
-                  <h3>Contact us</h3>
-                  <p>
-                    If you have questions or concerns, please fill out the form
-                    on our
-                    <Link to="/contact"> Contact page</Link>.
-                  </p>
-                  <p>
-                    If you need help urgently, please{" "}
-                    <Link to="hotline">call our hotline</Link>.
-                  </p>
-                </SectionWithSpacing>
-              </Content>
-            </Column>
-          </Columns>
-        </Container>
-      </Section>
+      <section className="bg-gray-200 py-8 relative">
+        <div
+          className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute"
+          style={{ height: 80, transform: "translateZ(0)" }}
+        >
+          <svg
+            className="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+            style={{ bottom: -1 }}
+          >
+            <polygon
+              className="text-gray-200 fill-current"
+              points="2560 0 2560 100 0 100"
+            ></polygon>
+          </svg>
+        </div>
+        <div className="container -mt-2 flex flex-col md:flex-row items-start m:mb-12">
+          <div className="w-full md:w-5/12 xl:w-1/3 -mt-16 sm:-mt-20 lg:-mt-24 xl:-mt-32 ">
+            <JoinNetworkCard />
+          </div>
+          <section className="w-full mx-auto md:mx-0 mt-20 md:mt-0 md:w-1/2 sm:w-auto lg:w-1/2 flex flex-col md:ml-auto">
+            <Title color="medium" className="mb-10 md:mb-8">
+              Join Kapit-Bisig today.
+            </Title>
+            <ul
+              className="grid md:grid-cols-2 gap-8"
+              style={{ height: "min-content" }}
+            >
+              {whyItems.map(({ title, text, icon }) => {
+                return (
+                  <li className="w-full bg-white p-4 rounded-md shadow-md md:rounded-none md:p-0 md:rounded-none md:bg-transparent md:shadow-none ">
+                    <div className="h-12 w-12 bg-gray-100 rounded-full flex items-center justify-center mb-2">
+                      <FontAwesomeIcon
+                        icon={icon as FontAwesomeIconProps["icon"]}
+                        size="lg"
+                        className="text-gray-700"
+                      />
+                    </div>
+                    <Subtitle>{title}</Subtitle>
+                    <Paragraph className="mb-auto" color="medium">
+                      {text}
+                    </Paragraph>
+                  </li>
+                )
+              })}
+            </ul>
+          </section>
+        </div>
+      </section>
+      {/* <section className="container py-8 md:py-20">
+        <Title>How does it work?</Title>
+        <p className="w-1/2">
+          To sign up for the Kapit-Bisig COVID Response mutual aid network, you
+          can fill out one of the two forms below.
+        </p>
+        <div className="grid sm:grid-cols-2 gap-8 py-8">
+          <Card title="I Need Help">
+            I'm going through some hard times. I'm struggling financially,
+            emotionally, or physically. I'm facing loss of work or other
+            hardship.
+            <div style={{ marginTop: 16 }}></div>
+            <RequestAid isColor="primary" />
+          </Card>
+          <Card title="I Want To Help">
+            I have additional means. I can offer time, resources, skills, or
+            knowledge. I want to give back to my community.
+            <div style={{ marginTop: 16 }}></div>
+            <Volunteer isColor="outline" />
+          </Card>
+        </div>
+      </section> */}
     </Layout>
   )
 }

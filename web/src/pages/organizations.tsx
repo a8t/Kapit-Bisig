@@ -1,14 +1,4 @@
 import React from "react"
-import {
-  Section,
-  Container,
-  Title,
-  Content,
-  Columns,
-  Column,
-  Card,
-  CardHeaderTitle,
-} from "bloomer"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 
@@ -16,7 +6,9 @@ import { toKebabCase } from "../utils/toKebabCase"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { CardHeader } from "bloomer/lib/components/Card/Header/CardHeader"
+import { Title, Subtitle } from "../components/ds/typography"
+import PageContainer from "../components/ds/PageContainer"
+import { sortProvinces } from "../utils/sortProvinces"
 
 const OrganizationsPage = ({}) => {
   const { query } = useStaticQuery(
@@ -49,35 +41,27 @@ const OrganizationsPage = ({}) => {
   return (
     <Layout>
       <SEO title="Organizations | Kapit-Bisig Canada" />
-      <Section className="has-background-white">
-        <Container>
-          <Columns>
-            <Column isSize="1/2">
-              <Title>Organization directory</Title>
-              <Content>
-                <p>
-                  We are a proud coalition of progressive organizations across
-                  Canada working together for this common cause.
-                </p>
-                <p>
-                  At this time, {query.totalCount} organizations are involved.
-                </p>
+      <PageContainer>
+        <Title>Organization directory</Title>
+        <p className="max-w-md">
+          We are a proud coalition of progressive organizations across Canada
+          working together for this common cause.
+        </p>
+        <p className="max-w-md mt-4">
+          At this time, {query.totalCount} organizations are involved.
+        </p>
 
-                {query.organizationsGroupedByProvince.map(
-                  ({ provinceName, organizations }) => {
-                    return (
-                      <OrganizationsByProvince
-                        provinceName={provinceName}
-                        organizations={organizations}
-                      />
-                    )
-                  }
-                )}
-              </Content>
-            </Column>
-          </Columns>
-        </Container>
-      </Section>
+        {sortProvinces(query.organizationsGroupedByProvince).map(
+          ({ provinceName, organizations }) => {
+            return (
+              <OrganizationsByProvince
+                provinceName={provinceName}
+                organizations={organizations}
+              />
+            )
+          }
+        )}
+      </PageContainer>
     </Layout>
   )
 }
@@ -86,12 +70,10 @@ export default OrganizationsPage
 
 function OrganizationsByProvince({ provinceName, organizations }) {
   return (
-    <section style={{ padding: 16 }}>
-      <Title isSize={5} style={{ marginBottom: 8 }}>
-        <Link to={`/provinces/${toKebabCase(provinceName)}`}>
-          {provinceName}
-        </Link>
-      </Title>
+    <section className="mt-8">
+      <Subtitle isSize={5} style={{ marginBottom: 8 }}>
+        {provinceName}
+      </Subtitle>
       <ul>
         {organizations.map(
           ({
@@ -116,8 +98,8 @@ function OrganizationsByProvince({ provinceName, organizations }) {
 
 function OrganizationsByCity({ city, organizations }) {
   return (
-    <section style={{ padding: 16 }}>
-      <Title isSize={5} style={{ marginBottom: 8 }}>
+    <section>
+      <Title>
         <Link to={`/cities/${city.toLowerCase()}`}>{city}</Link>
       </Title>
       <ul>

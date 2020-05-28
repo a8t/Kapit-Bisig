@@ -1,18 +1,8 @@
-import React, { Component } from "react"
-import {
-  Hero,
-  HeroBody,
-  Container,
-  Title,
-  Button,
-  Columns,
-  Column,
-  Icon,
-  Content,
-} from "bloomer"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import CallToAction from "./callToAction"
+import { RequestAid } from "./callToAction"
+import { Title, Paragraph } from "./ds/typography"
 
 const KapitBisigHero = ({ siteTitle, subtitle }) => {
   const { logo } = useStaticQuery(
@@ -37,45 +27,47 @@ const KapitBisigHero = ({ siteTitle, subtitle }) => {
   )
 
   return (
-    <Hero isColor="primary" isSize="medium">
-      <HeroBody>
-        <Container>
-          <Columns>
-            <Column isSize="1/2">
-              <Img
-                fluid={logo.childImageSharp.fluid}
-                style={{ width: 400, maxWidth: "100%" }}
-                alt="Kapit-Bisig Logo"
-              />
-            </Column>
-            <Column
-              isSize="1/2"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                marginTop: 32,
-              }}
-            >
-              {/* Headline */}
-              <Title style={{ marginTop: "auto" }}>{subtitle}</Title>
+    <section
+      className="py-20 sm:py-48 xl:pb-56 md:max-height-90vh flex items-center text-white hero"
+      style={{ minHeight: 800, height: "100%" }}
+    >
+      <div className="container m-auto flex flex-col md:flex-row md:items-end">
+        <div className="flex-0 w-full md:w-1/2">
+          <Img
+            fluid={logo.childImageSharp.fluid}
+            style={{
+              width: 400,
+              maxWidth: "100%",
+              // objectFit: "contain",
+              // objectPosition: "bottom center",
+            }}
+            alt="Kapit-Bisig Logo"
+          />
+        </div>
+        <div className="w-full max-w-md md:w-1/2 md:max-w-sm text-white mt-6 flex flex-col justify-start">
+          {/* Headline */}
+          <Title color="white">{subtitle}</Title>
 
-              <Content>Kapit-Bisig means "linking arms" in Tagalog.</Content>
-              <Content>
-                Community care and mutual aid are the best way for us to
-                overcome the hardship caused by COVID-19.{" "}
-                <b>
-                  That is why we've organized Kapit-Bisig Laban COVID, a mutual
-                  aid network.
-                </b>
-              </Content>
+          <Paragraph className=" text-md" color="white">
+            Kapit-Bisig means "linking arms" in Tagalog.
+          </Paragraph>
+          <Paragraph className=" text-md" color="white">
+            Community care and mutual aid are the best way for us to overcome
+            the hardship caused by COVID-19.
+          </Paragraph>
+          <Paragraph className=" text-lg" color="white">
+            That is why we've organized{" "}
+            <b>
+              Kapit-Bisig Laban COVID, a mutual aid network for all Filipinos in
+              Canada.
+            </b>
+          </Paragraph>
 
-              {/* Call to action button */}
-              <CallToAction size="medium" />
-            </Column>
-          </Columns>
-        </Container>
-      </HeroBody>
-    </Hero>
+          {/* Call to action button */}
+          <RequestAid isColor="outline" />
+        </div>
+      </div>
+    </section>
   )
 }
 
