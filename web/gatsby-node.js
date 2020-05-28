@@ -18,6 +18,76 @@ const toKebabCase = str => {
     .map(e => e.toLowerCase())
     .join("-")
 }
+
+// /web/gatsby-node.js
+// Notice the capitalized type names
+exports.createResolvers = ({ createResolvers }) => {
+  const resolvers = {
+    SanityCategory: {
+      posts: {
+        type: ["SanityPost"],
+        resolve(source, args, context, info) {
+          return context.nodeModel.runQuery({
+            type: "SanityPost",
+            query: {
+              filter: {
+                categories: {
+                  elemMatch: {
+                    _id: {
+                      eq: source._id,
+                    },
+                  },
+                },
+              },
+            },
+          })
+        },
+      },
+    },
+    SanityProvince: {
+      cities: {
+        type: ["SanityCity"],
+        resolve(source, args, context, info) {
+          return context.nodeModel.runQuery({
+            type: "SanityCity",
+            query: {
+              filter: {
+                province: {
+                  _id: {
+                    eq: source._id,
+                  },
+                },
+              },
+            },
+          })
+        },
+      },
+    },
+    SanityCity: {
+      organizations: {
+        type: ["SanityOrganization"],
+        resolve(source, args, context, info) {
+          return context.nodeModel.runQuery({
+            type: "SanityOrganization",
+            query: {
+              filter: {
+                cities: {
+                  elemMatch: {
+                    _id: {
+                      eq: source._id,
+                    },
+                  },
+                },
+              },
+            },
+          })
+        },
+      },
+    },
+  }
+  createResolvers(resolvers)
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { data } = await graphql(`
     query {
