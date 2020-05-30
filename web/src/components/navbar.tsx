@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import KBLogo from "../images/kapitbisig-logo.svg"
 import Img from "gatsby-image"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
@@ -63,16 +64,10 @@ const CustomNavbar: React.FC<{ siteTitle: string }> = ({ siteTitle }) => {
         <div className="flex flex-row p-x-4 items-center justify-between ">
           <Link
             to="/"
-            className="text-lg font-light tracking-widest rounded-lg focus:outline-none flex items-center space-x-2"
+            className=" focus:outline-none flex items-center space-x-4"
           >
-            <Img
-              fluid={icon.childImageSharp.fluid}
-              style={{
-                width: 32,
-              }}
-              alt="Kapit-Bisig Logo"
-            />
-            <p className="font-display text-white">Kapit-Bisig Canada</p>
+            <img src={KBLogo} className="w-8" />
+            <p className="text-white font-semibold">Home</p>
           </Link>
           <button
             className="rounded-lg ml-auto sm:hidden focus:outline-none focus:shadow-outline py-4"
@@ -81,15 +76,15 @@ const CustomNavbar: React.FC<{ siteTitle: string }> = ({ siteTitle }) => {
             <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">
               {isOpen ? (
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 ></path>
               ) : (
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 ></path>
               )}
             </svg>
@@ -101,7 +96,7 @@ const CustomNavbar: React.FC<{ siteTitle: string }> = ({ siteTitle }) => {
           } p-x-4 sm:pb-x-0 sm:flex sm:justify-end sm:flex-row sm:items-center space-x-0 md:space-x-4 text-sm md:text-base`}
         >
           <NavbarLink to="/about">About</NavbarLink>
-
+          <NavbarLink to="/news">News</NavbarLink>
           <NavbarLink to="/contact">Contact</NavbarLink>
           <NavbarLink to="/hotline">24/7 Hotline</NavbarLink>
           {/* <Link
