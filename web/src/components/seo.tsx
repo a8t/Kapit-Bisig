@@ -32,8 +32,6 @@ function SEO({ description, lang, meta, title, ogImage = null }) {
     `
   )
 
-  console.log(defaultOgImage)
-
   const metaDescription =
     description || site.description || "We're in this together."
 
