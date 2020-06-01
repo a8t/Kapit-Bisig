@@ -16,11 +16,12 @@ export default function OrganizationCard({
   instagram,
   facebook,
   email,
+  slug,
 }) {
   return (
     <div className="max-w-sm">
       <Card
-        title={<Link to={`/organizations/${toKebabCase(name)}`}>{name}</Link>}
+        title={<Link to={`/organizations/${slug.current}`}>{name}</Link>}
         titleSize="lg"
       >
         {/* lol this is kind of cursed but it works */}

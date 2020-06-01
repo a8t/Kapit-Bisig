@@ -3,6 +3,7 @@ import Figure from "./Figure"
 
 import { imageUrlFor } from "../lib/image-url"
 import PortableText from "./portableText"
+import Link from "./Link"
 
 function ImageSection({ node }) {
   const { alt, caption, asset, cta } = node
@@ -33,6 +34,12 @@ const serializers = {
     authorReference: ({ node }) => <span>{node.author.name}</span>,
     mainImage: Figure,
     figure: ({ node }) => <ImageSection node={node} />,
+  },
+  marks: {
+    internalLink: ({ mark, ...props }) => {
+      console.log(props)
+      return <Link to={mark.linkDestination} {...props} />
+    },
   },
 }
 

@@ -95,10 +95,10 @@ const CustomNavbar: React.FC<{ siteTitle: string }> = ({ siteTitle }) => {
             isOpen ? "flex" : "hidden"
           } p-x-4 sm:pb-x-0 sm:flex sm:justify-end sm:flex-row sm:items-center space-x-0 md:space-x-4 text-sm md:text-base`}
         >
+          <NavbarLink to="/youth-survey">Youth Survey</NavbarLink>
           <NavbarLink to="/about">About</NavbarLink>
           <NavbarLink to="/news">News</NavbarLink>
           <NavbarLink to="/contact">Contact</NavbarLink>
-          <NavbarLink to="/hotline">24/7 Hotline</NavbarLink>
           {/* <Link
                         to="/resources"
 

@@ -56,6 +56,9 @@ const PostsPage = ({}) => {
             color {
               hex
             }
+            posts {
+              _id
+            }
             title
             description
           }
@@ -90,7 +93,11 @@ const PostsPage = ({}) => {
         <section className="p-8 bg-gray-100 rounded-md shadow-md self-start z-20 row-auto">
           <Title>Categories</Title>
           <ul className="flex gap-2 flex-wrap">
-            {categories.map(({ title, description, slug, color }) => {
+            {categories.map(({ title, description, slug, color, posts }) => {
+              if (!posts || posts.length === 0) {
+                return null
+              }
+
               return (
                 <li>
                   <CategoryChip
@@ -105,12 +112,14 @@ const PostsPage = ({}) => {
           </ul>
         </section>
 
-        <section className="space-y-4 lg:col-span-2">
-          <Title>Recent articles</Title>
-          {remainingArticles.map(post => (
-            <RecentArticle {...post} key={post.title} />
-          ))}
-        </section>
+        {remainingArticles.length > 0 && (
+          <section className="space-y-4 lg:col-span-2">
+            <Title>Recent articles</Title>
+            {remainingArticles.map(post => (
+              <RecentArticle {...post} key={post.title} />
+            ))}
+          </section>
+        )}
       </PageContainer>
     </Layout>
   )

@@ -32,6 +32,9 @@ const OrganizationsPage = ({}) => {
               twitter
               website
               phone
+              slug {
+                current
+              }
             }
           }
         }
@@ -85,9 +88,10 @@ function OrganizationsByProvince({ provinceName, organizations }) {
             twitter,
             website,
             phone,
+            slug,
           }) => (
             <li>
-              <Link to={`/organizations/${toKebabCase(name)}`}> {name}</Link>
+              <Link to={`/organizations/${slug.current}`}> {name}</Link>
             </li>
           )
         )}
@@ -113,9 +117,10 @@ function OrganizationsByCity({ city, organizations }) {
             twitter,
             website,
             phone,
+            slug,
           }) => (
             <li>
-              <Link to={`/organizations/${toKebabCase(name)}`}> {name}</Link>
+              <Link to={`/organizations/${slug.current}`}> {name}</Link>
             </li>
           )
         )}
