@@ -19,7 +19,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import MainFooter from "./footer"
 import Navbar from "./navbar"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, className = "" }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site: sanitySiteConfig {
@@ -29,14 +29,11 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      {/* Wrapper for sticky footer */}
-      <div className="min-h-screen flex flex-col">
-        <Navbar siteTitle={data.site.title} />
-        <main className="flex-grow">{children}</main>
-        <MainFooter />
-      </div>
-    </>
+    <div className={"min-h-screen flex flex-col " + className}>
+      <Navbar siteTitle={data.site.title} />
+      <main className="flex-grow">{children}</main>
+      <MainFooter />
+    </div>
   )
 }
 

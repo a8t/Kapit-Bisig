@@ -9,7 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-
+import og from "../images/OG-image.png"
 function SEO({ description, lang, meta, title, ogImage = null }) {
   const { site, defaultOgImage } = useStaticQuery(
     graphql`
@@ -32,6 +32,8 @@ function SEO({ description, lang, meta, title, ogImage = null }) {
     `
   )
 
+  console.log(defaultOgImage)
+
   const metaDescription =
     description || site.description || "We're in this together."
 
@@ -53,7 +55,15 @@ function SEO({ description, lang, meta, title, ogImage = null }) {
         },
         {
           property: `og:image`,
-          content: ogImage || defaultOgImage.childImageSharp.original.src,
+          content: ogImage || og || defaultOgImage.childImageSharp.original.src,
+        },
+        {
+          property: `og:image:width`,
+          content: 1200,
+        },
+        {
+          property: `og:image:height`,
+          content: 630,
         },
         {
           property: `og:description`,

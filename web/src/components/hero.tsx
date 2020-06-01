@@ -64,7 +64,9 @@ const KapitBisigHero = ({ siteTitle, subtitle }) => {
           </Paragraph>
 
           {/* Call to action button */}
-          <RequestAid isColor="outline" />
+          <span className="text-xl">
+            <RequestAid isColor="outline" />
+          </span>
         </div>
       </div>
     </section>

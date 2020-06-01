@@ -12,7 +12,18 @@ export default {
       name: 'to',
       type: 'reference',
       description: 'Locate a document you want to link to',
-      to: [{type: 'page'}, {type: 'route'}]
+      to: [
+        {type: 'page'},
+        {type: 'route'},
+        {type: 'organization'},
+        {type: 'city'},
+        {type: 'province'}
+      ]
+    },
+    {
+      name: 'linkDestination',
+      type: 'string',
+      description: 'Local slug'
     }
   ],
   blockEditor: {

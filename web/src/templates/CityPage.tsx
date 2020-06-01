@@ -52,7 +52,7 @@ const CityPage = ({ pageContext }) => {
                 best to meet everyone's needs and will be accepting member
                 registration again soon.
               </Paragraph>
-              <div className="grid gap-8 sm:grid-cols-1">
+              <div className="grid gap-8 sm:grid-cols-2">
                 <div>
                   <p className="mb-2">
                     <a
@@ -62,6 +62,16 @@ const CityPage = ({ pageContext }) => {
                       Donate
                     </a>
                   </p>
+                </div>
+                <div>
+                  <Volunteer
+                    isColor="outline"
+                    link={
+                      volunteerFormWithDefault.includes("mailto")
+                        ? `${volunteerFormWithDefault}?subject=Kapit-Bisig Volunteer Signup - ${name}`
+                        : volunteerFormWithDefault
+                    }
+                  />
                 </div>
               </div>
             </Card>
@@ -104,19 +114,21 @@ const CityPage = ({ pageContext }) => {
             </Paragraph>
 
             <ul className="flex flex-col space-y-2">
-              {organizations.map(organization => (
-                <Link
-                  to={`/organizations/${toKebabCase(organization.name)}`}
-                  as="li"
-                  className="group self-start"
-                >
-                  <FontAwesomeIcon
-                    icon="arrow-right"
-                    className="mr-2 text-blue-400"
-                  />
-                  {organization.name}
-                </Link>
-              ))}
+              {organizations
+                .sort((a, b) => (a.name > b.name ? 1 : -1))
+                .map(organization => (
+                  <Link
+                    to={`/organizations/${organization.slug.current}`}
+                    as="li"
+                    className="group self-start"
+                  >
+                    <FontAwesomeIcon
+                      icon="arrow-right"
+                      className="mr-2 text-blue-400"
+                    />
+                    {organization.name}
+                  </Link>
+                ))}
             </ul>
             {/* <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 flex-wrap">
 						{organizations.map(organization => (
