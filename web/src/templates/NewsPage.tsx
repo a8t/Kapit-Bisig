@@ -8,6 +8,7 @@ import { Title } from "../components/ds/typography"
 import { useStaticQuery, graphql } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "../components/Link"
+import { insertBetween } from "../utils"
 
 const NewsPage = ({ pageContext }) => {
   const { title, mainImage, content, date, categories = [] } = pageContext
@@ -35,14 +36,12 @@ const NewsPage = ({ pageContext }) => {
             {categories.length > 0 && (
               <div>
                 <FontAwesomeIcon icon="folder" className="mr-2" />
-                {categories.map(({ title, slug }) => (
-                  <Link
-                    to={`/news/categories/${slug.current}`}
-                    className="mr-2"
-                  >
-                    {title}
-                  </Link>
-                ))}
+                {insertBetween(
+                  categories.map(({ title, slug }) => (
+                    <Link to={`/news/categories/${slug.current}`}>{title}</Link>
+                  )),
+                  ", "
+                )}
               </div>
             )}
           </div>

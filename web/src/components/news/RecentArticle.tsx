@@ -4,6 +4,7 @@ import moment from "moment"
 import { Subtitle, Paragraph } from "../ds"
 import Link from "../Link"
 import CategoryChip from "./CategoryChip"
+import { insertBetween } from "../../utils"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function RecentArticle({
@@ -26,14 +27,18 @@ export default function RecentArticle({
         )}
       </div>
       <section className="p-4 flex flex-col flex-grow">
-        <div className="flex gap-2 text-gray-600 text-sm mb-2">
-          <time>{moment(_createdAt).format("MMM D, YYYY")}</time>•
+        <div className="flex space-x-2 text-gray-600 text-sm mb-2">
+          <time>{moment(_createdAt).format("MMM D, YYYY")}</time>
+          <span>•</span>
           <span>
             <FontAwesomeIcon icon="folder" className="mr-1" />
             {categories.length > 0
-              ? categories.map(({ title, slug }) => (
-                  <Link to={`/news/categories/${slug.current}`}>{title}</Link>
-                ))
+              ? insertBetween(
+                  categories.map(({ title, slug }) => (
+                    <Link to={`/news/categories/${slug.current}`}>{title}</Link>
+                  )),
+                  ", "
+                )
               : "Uncategorized"}
           </span>
         </div>
