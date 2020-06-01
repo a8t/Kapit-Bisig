@@ -72,6 +72,22 @@ export default {
       name: 'email',
       type: 'email',
       fieldset: 'social'
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      description: 'The organization link url. Easiest to just click Generate.',
+      options: {
+        source: doc => doc.name,
+        maxLength: 96,
+        slugify: input =>
+          input
+            .toLowerCase()
+            .replace(/\s+/g, '-')
+            .slice(0, 200)
+      },
+      validation: Rule => [Rule.required()]
     }
   ]
 }

@@ -158,6 +158,9 @@ const createOrganizationPages = async (graphql, actions) => {
           twitter
           website
           phone
+          slug {
+            current
+          }
         }
       }
     }
@@ -176,9 +179,10 @@ const createOrganizationPages = async (graphql, actions) => {
       twitter,
       website,
       phone,
+      slug,
     }) => {
       actions.createPage({
-        path: `organizations/${toKebabCase(name)}`,
+        path: `organizations/${slug.current}`,
         component: path.resolve("src/templates/OrganizationPage.tsx"),
         context: {
           name,
@@ -191,6 +195,7 @@ const createOrganizationPages = async (graphql, actions) => {
           twitter,
           website,
           phone,
+          slug,
         },
       })
     }
@@ -225,6 +230,9 @@ const createCityPages = async (graphql, actions) => {
             twitter
             website
             phone
+            slug {
+              current
+            }
           }
           requestForm
           volunteerForm
