@@ -31,13 +31,15 @@ const KBLogoCircle = (
 const SurveyHeader = () => (
   <header className="py-24 sm:max-height-60vh flex items-center text-white relative overflow-y-hidden bg-gray-800">
     <section className="container">
-      <Title color="white" className="text-6xl self-start relative">
+      <Title color="white" className="lg:text-6xl self-start relative">
         Kapit-Bisig Youth Survey
       </Title>
       <Subtitle color="white" className="self-start max-w-2xl">
-        Are you a Filipino youth in Canada?
-        <br />
-        Fill out the survey below to enter the raffle.
+        <span className="text-xl lg:text-2xl">
+          Are you a Filipino youth in Canada?
+          <br />
+          Fill out the survey below to enter the raffle.
+        </span>
       </Subtitle>
     </section>
   </header>
@@ -70,7 +72,7 @@ const BlockQuote = ({
     <p className="mb-4 sm:text-xl italic z-10 relative">{quote}</p>
 
     <footer className="flex items-center z-10">
-      <div className="w-12 h-12 mr-4 rounded-full overflow-hidden bg-gray-400">
+      <div className="w-12 h-12 mr-4 rounded-full shadow-md overflow-hidden bg-gray-400">
         {avatar && (
           <img
             alt={`Avatar of ${authorName}`}
@@ -185,8 +187,28 @@ const YouthSurveyPage = () => {
               <li>
                 <Link to="/organizations/makulay">Makulay atbp.</Link>
               </li>
-              <li>University of Calgary Filipino Students’ Association</li>
+              <li>
+                <Link to="/organizations/ucfsa">
+                  University of Calgary Filipino Students Association
+                </Link>
+              </li>
             </ul>
+          </Paragraph>
+
+          <div className="h-12" />
+          <Subtitle>Join us</Subtitle>
+
+          <Paragraph>
+            Other organizations and groups are invited to share the survey
+            amongst their networks of Filipino youth, and join the network to
+            support youth during this time.
+          </Paragraph>
+          <Paragraph>
+            If you would like to get in touch with us, please send an email to{" "}
+            <a href="mailto:youthsurvey@kapitbisig.ca">
+              youthsurvey@kapitbisig.ca
+            </a>
+            .
           </Paragraph>
         </article>
 
@@ -199,11 +221,11 @@ const YouthSurveyPage = () => {
           />
           <BlockQuote
             quote="We recognize the lack of visibility and spaces for queer and trans Filipino youth to be heard and made sure that the survey can be as inclusive to them."
-            authorName="Anonymous"
-            authorDescription="Member, Makulay atbp."
+            authorName="Members"
+            authorDescription="Makulay atbp."
           />
           <BlockQuote
-            quote="Barriers to resources faced by migrant, undocumented, and working-class youth can only be addressed by uniting together."
+            quote="Ang mga hadlang sa mga mapagkukunan na kinakaharap ng mga migranteng undocumented, at mga kabataan uring manggagawa ay maaari lamang matugunan sa pamamagitan ng pag-iisa"
             authorName="Nicole Araneta"
             authorDescription="Chairperson, Anakbayan-Canada"
             avatar={nicole}
