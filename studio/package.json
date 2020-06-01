@@ -6,6 +6,7 @@
   "author": "Sanity <hello@sanity.io>",
   "scripts": {
     "build": "sanity build",
+    "start": "sanity start",
     "dev": "sanity start",
     "test": "sanity check",
     "format": "prettier-eslint --write \"**/*.js\""
