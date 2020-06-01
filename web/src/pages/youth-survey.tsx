@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { useInView } from "react-intersection-observer"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -87,6 +89,7 @@ const BlockQuote = ({
 )
 
 const YouthSurveyPage = () => {
+  const [ref, inView, entry] = useInView()
   return (
     <Layout className="bg-gray-200">
       <SEO title="Youth Survey | Kapit-Bisig Canada" />
@@ -116,6 +119,17 @@ const YouthSurveyPage = () => {
           {KBLogoCircle}
         </div>
       </div>
+
+      {!inView && (
+        <Link
+          to="#survey"
+          className="text-xs sm:text-sm m-auto fixed bg-white p-3 px-6 shadow-xl border-2 rounded-full z-50 flex justify-center items-center"
+          style={{ right: 16, bottom: 16 }}
+        >
+          Go directly to survey
+          <FontAwesomeIcon icon="arrow-down" className="ml-4" />
+        </Link>
+      )}
 
       <section className="container grid lg:grid-cols-2 gap-16">
         <article className="space-y-8 max-w-xl">
@@ -245,7 +259,12 @@ const YouthSurveyPage = () => {
       </section>
 
       {/* survey embed section */}
-      <section className="container py-8">
+      <section
+        className="container py-8"
+        id="survey"
+        style={{ scrollMargin: 60 }}
+        ref={ref}
+      >
         <iframe
           className="airtable-embed z-10 relative rounded-lg"
           src="https://airtable.com/embed/shrKX3gvA4w5zWwpD?backgroundColor=purple"
