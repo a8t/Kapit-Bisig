@@ -57,5 +57,11 @@ module.exports = {
         overlayDrafts: !isProd,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-168133436-1",
+      },
+    },
   ],
 }
