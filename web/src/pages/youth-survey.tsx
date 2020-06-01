@@ -13,7 +13,7 @@ import nicole from "../images/nicole.png"
 
 const KBLogoCircle = (
   <div
-    className="bg-gray-100 border-white rounded-full w-16 h-16 absolute flex justify-center items-center mx-auto"
+    className="bg-gray-100 border-white rounded-full w-16 h-16 absolute flex justify-center items-center mx-auto shadow-sm"
     style={{
       top: "-2rem",
       left: 0,
@@ -50,15 +50,15 @@ const BlockQuote = ({
   <blockquote className="grid bg-white shadow-xl p-8 md:p-12">
     <div className="relative">
       <span
-        className="text-6xl -ml-4 -mt-1 text-white mr-2 hidden sm:block absolute top-0 z-1 leading-none"
+        className="text-6xl -ml-5 -mt-2 text-white mr-2 hidden sm:block absolute top-0 z-1 leading-none"
         aria-hidden="true"
         style={{
           textShadow: `
-          3px 3px 0 rgba(0,0,0,0.05),
-        -1px -1px 0 rgba(0,0,0,0.05),  
-         1px -1px 0 rgba(0,0,0,0.05),
-         -1px 1px 0 rgba(0,0,0,0.05),
-          1px 1px 0 rgba(0,0,0,0.05)`,
+          3px 3px 0 rgba(0,0,0,0.11),
+          -1px -1px 0 rgba(0,0,0,0.11),  
+         1px -1px 0 rgba(0,0,0,0.11),
+         -1px 1px 0 rgba(0,0,0,0.11),
+          1px 1px 0 rgba(0,0,0,0.11)`,
         }}
       >
         &ldquo;
@@ -68,15 +68,16 @@ const BlockQuote = ({
     <p className="mb-4 sm:text-xl italic z-10 relative">{quote}</p>
 
     <footer className="flex items-center z-10">
-      {avatar ? (
-        <img
-          alt="Avatar of nickd"
-          className="w-12 h-12 mr-4 rounded-full bg-neutral-500 object-cover"
-          src={avatar}
-        />
-      ) : (
-        <div className="w-12 h-12 mr-4  rounded-full bg-gray-400" />
-      )}
+      <div className="w-12 h-12 mr-4 rounded-full overflow-hidden bg-gray-400">
+        {avatar && (
+          <img
+            alt={`Avatar of ${authorName}`}
+            className="w-full h-full object-cover"
+            src={avatar}
+          />
+        )}
+      </div>
+
       <div className="flex flex-col">
         <span className="mb-1 sm:text-lg font-bold">{authorName}</span>
         <span className="text-sm sm:text-md ">{authorDescription}</span>
@@ -159,9 +160,18 @@ const YouthSurveyPage = () => {
           <Paragraph>
             The network includes:
             <ul className="ml-8 my-4 list-disc">
-              <li>Anakbayan Canada</li>
-              <li>FILCASA</li>
-              <li>Makulay atbp.</li>
+              <li>
+                <Link to="/organizations/anakbayan-canada">
+                  Anakbayan Canada
+                </Link>
+              </li>
+              <li>
+                <Link to="/organizations/anakbayan-canada">FILCASA</Link>
+              </li>
+              <li>
+                <Link to="/organizations/makulay">Makulay atbp.</Link>
+              </li>
+              <li>University of Calgary Filipino Students’ Association</li>
             </ul>
           </Paragraph>
         </article>
@@ -174,12 +184,12 @@ const YouthSurveyPage = () => {
             avatar={g}
           />
           <BlockQuote
-            quote="Makulay thinks it's great if LGBT youth voices are heard."
+            quote="We recognize the lack of visibility and spaces for queer and trans Filipino youth to be heard and made sure that the survey can be as inclusive to them."
             authorName="Anonymous"
             authorDescription="Member, Makulay atbp."
           />
           <BlockQuote
-            quote="Anakbayan encourages all youth to fill out the survey."
+            quote="Barriers to resources faced by migrant, undocumented, and working-class youth can only be addressed by uniting together."
             authorName="Nicole Araneta"
             authorDescription="Chairperson, Anakbayan-Canada"
             avatar={nicole}
@@ -188,7 +198,7 @@ const YouthSurveyPage = () => {
       </section>
 
       <section className="my-24">
-        <div className="bg-blue-100 text-gray-900 mx-auto pt-12 pb-6 px-24 md:rounded-lg max-w-3xl">
+        <div className="bg-gray-300 text-gray-900 mx-auto pt-12 pb-6 px-8 sm:px-16 md:px-24 md:rounded-lg max-w-3xl">
           <Subtitle>About the survey</Subtitle>
           <p>
             The survey will consist of questions focused on the following
