@@ -52,16 +52,18 @@ const CitiesPage = () => {
                   }}
                 >
                   <Subtitle>{provinceName}</Subtitle>
-                  {cities.map(city => {
-                    return (
-                      <CityCard
-                        name={city.name}
-                        provinceName={provinceName}
-                        cityLogoAssetFluid={city.cityLogo?.asset.fluid}
-                        link={`/cities/${toKebabCase(city.name)}`}
-                      />
-                    )
-                  })}
+                  {cities
+                    .sort((a, b) => (a.name > b.name ? 1 : -1))
+                    .map(city => {
+                      return (
+                        <CityCard
+                          name={city.name}
+                          provinceName={provinceName}
+                          cityLogoAssetFluid={city.cityLogo?.asset.fluid}
+                          link={`/cities/${toKebabCase(city.name)}`}
+                        />
+                      )
+                    })}
                 </div>
               )
             }

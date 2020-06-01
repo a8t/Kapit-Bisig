@@ -14,6 +14,10 @@ a {
   @apply text-blue-500;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .hero {
   background-color: #0066cc;
   /* background-image: linear-gradient(
