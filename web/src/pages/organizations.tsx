@@ -78,23 +78,25 @@ function OrganizationsByProvince({ provinceName, organizations }) {
         {provinceName}
       </Subtitle>
       <ul>
-        {organizations.map(
-          ({
-            name,
-            city,
-            email,
-            facebook,
-            instagram,
-            twitter,
-            website,
-            phone,
-            slug,
-          }) => (
-            <li>
-              <Link to={`/organizations/${slug.current}`}> {name}</Link>
-            </li>
-          )
-        )}
+        {organizations
+          .sort((a, b) => (a.name > b.name ? 1 : -1))
+          .map(
+            ({
+              name,
+              city,
+              email,
+              facebook,
+              instagram,
+              twitter,
+              website,
+              phone,
+              slug,
+            }) => (
+              <li>
+                <Link to={`/organizations/${slug.current}`}> {name}</Link>
+              </li>
+            )
+          )}
       </ul>
     </section>
   )
