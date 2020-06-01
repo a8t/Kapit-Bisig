@@ -1,5 +1,6 @@
 import React from "react"
 import { Link as GatsbyLink } from "gatsby"
+import { OutboundLink } from "gatsby-plugin-google-analytics"
 
 export default function Link({ to, ...props }) {
   if (!to) {
@@ -11,8 +12,8 @@ export default function Link({ to, ...props }) {
   }
 
   return (
-    <a {...props} href={to}>
+    <OutboundLink {...props} href={to}>
       {props.children}
-    </a>
+    </OutboundLink>
   )
 }
