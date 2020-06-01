@@ -58,6 +58,14 @@ function SEO({ description, lang, meta, title, ogImage = null }) {
           content: ogImage || og || defaultOgImage.childImageSharp.original.src,
         },
         {
+          property: `og:image:width`,
+          content: 1200,
+        },
+        {
+          property: `og:image:height`,
+          content: 630,
+        },
+        {
           property: `og:description`,
           content: metaDescription,
         },
