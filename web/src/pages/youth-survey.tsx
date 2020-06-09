@@ -192,6 +192,9 @@ const YouthSurveyPage = () => {
                   University of Calgary Filipino Students Association
                 </Link>
               </li>
+              <li>
+                <Link to="/organizations/anak">ANAK, Inc</Link>
+              </li>
             </ul>
           </Paragraph>
 
