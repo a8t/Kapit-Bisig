@@ -12,6 +12,7 @@ import KapitBisigHero from "../components/hero"
 import KBLogo from "../images/kapitbisig-logo.svg"
 import g from "../images/g.png"
 import nicole from "../images/nicole.png"
+import Helmet from "react-helmet"
 
 const KBLogoCircle = (
   <div
@@ -94,6 +95,7 @@ const YouthSurveyPage = () => {
   const [ref, inView, entry] = useInView()
   return (
     <Layout className="bg-gray-200">
+      <Helmet htmlAttributes={{ class: "smooth-scroll" }} />
       <SEO title="Youth Survey | Kapit-Bisig Canada" />
 
       <SurveyHeader />
