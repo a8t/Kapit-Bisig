@@ -195,7 +195,7 @@ const YouthSurveyPage = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/organizations/anak">ANAK, Inc</Link>
+                <Link to="/organizations/anak-inc">ANAK, Inc</Link>
               </li>
             </ul>
           </Paragraph>
