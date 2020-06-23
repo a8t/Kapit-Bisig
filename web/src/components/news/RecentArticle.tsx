@@ -17,9 +17,12 @@ export default function RecentArticle({
 }) {
   return (
     <article className="shadow-sm rounded-md sm:flex bg-white overflow-hidden border-gray-200 border-2">
-      <div className="sm:w-48 bg-gray-200">
+      <div className="h-64 sm:w-48 bg-gray-200">
         {mainImage ? (
-          <Img fluid={mainImage.asset.fluid} className="w-full h-full" />
+          <Img
+            fluid={mainImage.asset.fluid}
+            className="w-full h-full sm:w-48"
+          />
         ) : (
           <div className="flex justify-center items-center w-full h-full bg-gray-200">
             <strong className="text-6xl text-gray-500">KB</strong>

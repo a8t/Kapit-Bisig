@@ -4,8 +4,7 @@ module.exports = {
   extends: ['standard', 'standard-react'],
   parser: 'babel-eslint',
   rules: {
-    'react/prop-types': 0,
-    'object-curly-spacing': ['error', 'never']
+    'react/prop-types': 0
   },
   settings: {
     react: {
