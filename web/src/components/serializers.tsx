@@ -59,24 +59,27 @@ const BlockRenderer = props => {
 
 const PDFRenderer = ({ node }) => {
   return (
-    <object
-      data={node.asset.url}
-      type="application/pdf"
-      style={{ width: "calc(100% + 4rem)" }}
-      className="-ml-8"
-      height="1000"
-    >
-      <iframe
-        src={node.asset.url}
-        width="100%"
-        style={{ border: "none", minHeight: 500 }}
+    <>
+      Click <a href={node.asset.url}> here </a> to download this PDF.
+      <object
+        data={node.asset.url}
+        type="application/pdf"
+        style={{ width: "calc(100% + 4rem)" }}
+        className="-ml-8 mt-8"
+        height="1000"
       >
-        <p>
-          Your browser does not support PDFs.
-          <a href={node.asset.url}>Download the PDF</a>.
-        </p>
-      </iframe>
-    </object>
+        <iframe
+          src={node.asset.url}
+          width="100%"
+          style={{ border: "none", minHeight: 500 }}
+        >
+          <p>
+            Your browser does not support PDFs.
+            <a href={node.asset.url}>Download the PDF</a>.
+          </p>
+        </iframe>
+      </object>
+    </>
   )
 }
 
