@@ -271,7 +271,7 @@ const createNewsPages = async (graphql, actions) => {
             current
           }
           date: _createdAt
-          content: _rawText
+          content: _rawText(resolveReferences: { maxDepth: 10 })
           categories {
             title
             slug {
