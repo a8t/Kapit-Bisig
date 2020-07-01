@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { useInView } from "react-intersection-observer"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -13,6 +13,8 @@ import KBLogo from "../images/kapitbisig-logo.svg"
 import g from "../images/g.png"
 import nicole from "../images/nicole.png"
 import Helmet from "react-helmet"
+import Transition from "../components/Transition"
+import { useTranslation } from "react-i18next"
 
 const KBLogoCircle = (
   <div
@@ -109,16 +111,7 @@ const YouthSurveyPage = () => {
 
       <SurveyHeader />
 
-      {!inView && (
-        <Link
-          to="#survey"
-          className="text-xs sm:text-sm m-auto fixed bg-white p-3 px-6 shadow-xl border-2 rounded-full z-50 flex justify-center items-center"
-          style={{ right: 16, bottom: 16 }}
-        >
-          Go directly to survey
-          <FontAwesomeIcon icon="arrow-down" className="ml-4" />
-        </Link>
-      )}
+      <LanguageSwitcher />
 
       <section className="container pt-20 grid lg:grid-cols-2 gap-16">
         <article className="space-y-8 max-w-xl">
@@ -272,3 +265,73 @@ const YouthSurveyPage = () => {
   )
 }
 export default YouthSurveyPage
+
+const LanguageSwitcherOption = ({ onClick, children }) => {
+  return (
+    <a
+      href="#"
+      className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+      role="menuitem"
+      onClick={onClick}
+    >
+      {children}
+    </a>
+  )
+}
+
+function LanguageSwitcher() {
+  const { t, i18n } = useTranslation("youthSurvey")
+  const [isOpen, setIsOpen] = useState(false)
+  const toggleIsOpen = () => setIsOpen(!isOpen)
+
+  const createLanguageSwitch = lang => e => {
+    e.preventDefault()
+    i18n.changeLanguage(lang)
+    return false
+  }
+
+  return (
+    <>
+      <div
+        className="pointer text-xs sm:text-sm m-auto fixed bg-white p-3 px-6 shadow-xl border-2 rounded-full z-50 flex justify-center items-center"
+        style={{ right: 16, top: 72 }}
+        onClick={toggleIsOpen}
+      >
+        <FontAwesomeIcon icon="language" className="mr-2" />
+        {t("language")}
+        <FontAwesomeIcon icon="angle-down" className="ml-2" />
+        <Transition
+          show={isOpen}
+          enter="transition ease-out duration-100 transform"
+          enterFrom="opacity-0 scale-95"
+          enterTo="opacity-100 scale-100"
+          leave="transition ease-in duration-75 transform"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95"
+        >
+          <div
+            className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg"
+            style={{ top: 42 }}
+          >
+            <div className="rounded-md bg-white shadow-xs">
+              <div
+                className="py-1"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="options-menu"
+              >
+                <LanguageSwitcherOption onClick={createLanguageSwitch("en")}>
+                  English
+                </LanguageSwitcherOption>
+                <LanguageSwitcherOption onClick={createLanguageSwitch("tg")}>
+                  Tagalog
+                </LanguageSwitcherOption>
+                {/* <LanguageSwitcherOption onClick={createLanguageSwitch('fr')}>French</LanguageSwitcherOption> */}
+              </div>
+            </div>
+          </div>
+        </Transition>
+      </div>
+    </>
+  )
+}

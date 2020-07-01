@@ -37,5 +37,5 @@ module.exports = {
     display: ["responsive", "hover", "focus", "group-hover"],
     borderWidth: ["responsive", "hover", "focus"],
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/ui")],
 }
