@@ -2,19 +2,16 @@ import React, { useState, useRef, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { useInView } from "react-intersection-observer"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Helmet from "react-helmet"
+import { useTranslation } from "react-i18next"
+import Img from "gatsby-image/withIEPolyfill"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import CityCard from "../components/CityCard"
 import { Title, Subtitle, Paragraph } from "../components/ds/typography"
 import Link from "../components/Link"
-import KapitBisigHero from "../components/hero"
 import KBLogo from "../images/kapitbisig-logo.svg"
-import g from "../images/g.png"
-import nicole from "../images/nicole.png"
-import Helmet from "react-helmet"
 import Transition from "../components/Transition"
-import { useTranslation } from "react-i18next"
 
 const KBLogoCircle = (
   <div
@@ -60,47 +57,112 @@ const BlockQuote = ({
   avatar = null,
   authorName,
   authorDescription,
-}) => (
-  <blockquote className="grid bg-white shadow-xl p-12 max-w-xl mx-auto relative">
-    <span
-      className="text-6xl -ml-5 -mt-2 text-white mr-2 hidden sm:block absolute top-0 z-1 leading-none"
-      aria-hidden="true"
-      style={{
-        textShadow: `
+}) => {
+  const images = useStaticQuery(
+    graphql`
+      query {
+        pride: file(relativePath: { eq: "pride.png" }) {
+          childImageSharp {
+            fluid(
+              maxWidth: 300
+              traceSVG: {
+                color: "rgba(0,0,0,0)"
+                turnPolicy: TURNPOLICY_MINORITY
+                blackOnWhite: false
+              }
+            ) {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+        }
+        cufsa: file(relativePath: { eq: "cufsa.png" }) {
+          childImageSharp {
+            fluid(
+              maxWidth: 300
+              traceSVG: {
+                color: "rgba(0,0,0,0)"
+                turnPolicy: TURNPOLICY_MINORITY
+                blackOnWhite: false
+              }
+            ) {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+        }
+        g: file(relativePath: { eq: "g.png" }) {
+          childImageSharp {
+            fluid(
+              maxWidth: 300
+              traceSVG: {
+                color: "rgba(0,0,0,0)"
+                turnPolicy: TURNPOLICY_MINORITY
+                blackOnWhite: false
+              }
+            ) {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+        }
+        nicole: file(relativePath: { eq: "nicole.png" }) {
+          childImageSharp {
+            fluid(
+              maxWidth: 300
+              traceSVG: {
+                color: "rgba(0,0,0,0)"
+                turnPolicy: TURNPOLICY_MINORITY
+                blackOnWhite: false
+              }
+            ) {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+        }
+      }
+    `
+  )
+
+  return (
+    <blockquote className="grid bg-white shadow-xl p-12 max-w-xl mx-auto relative rounded-lg">
+      <span
+        className="text-6xl -ml-5 -mt-2 text-white mr-2 hidden sm:block absolute top-0 z-1 leading-none"
+        aria-hidden="true"
+        style={{
+          textShadow: `
           3px 3px 0 rgba(0,0,0,0.11),
           -1px -1px 0 rgba(0,0,0,0.11),  
          1px -1px 0 rgba(0,0,0,0.11),
          -1px 1px 0 rgba(0,0,0,0.11),
           1px 1px 0 rgba(0,0,0,0.11)`,
-        top: 50,
-        left: 50,
-      }}
-    >
-      &ldquo;
-    </span>
+          top: 50,
+          left: 50,
+        }}
+      >
+        &ldquo;
+      </span>
 
-    <p className="mb-4 sm:text-xl lg:text-lg 2xl:text-xl italic z-10 relative self-start ">
-      {quote}
-    </p>
+      <p className="mb-4 sm:text-xl lg:text-lg 2xl:text-xl italic z-10 relative self-start ">
+        {quote}
+      </p>
 
-    <footer className="flex items-center z-10">
-      <div className="w-12 h-12 mr-4 rounded-full shadow-md overflow-hidden bg-gray-400">
-        {avatar && (
-          <img
-            alt={`Avatar of ${authorName}`}
-            className="w-full h-full object-cover"
-            src={avatar}
-          />
-        )}
-      </div>
+      <footer className="flex items-center z-10">
+        <div className="w-12 h-12 mr-4 ">
+          {avatar && (
+            <Img
+              fluid={images[avatar].childImageSharp.fluid}
+              className="rounded-full w-12 h-12 object-cover  shadow-md "
+              alt={authorName}
+            />
+          )}
+        </div>
 
-      <div className="flex flex-col">
-        <span className="mb-1 sm:text-lg font-bold">{authorName}</span>
-        <span className="text-sm sm:text-md ">{authorDescription}</span>
-      </div>
-    </footer>
-  </blockquote>
-)
+        <div className="flex flex-col">
+          <span className="mb-1 sm:text-lg font-bold">{authorName}</span>
+          <span className="text-sm sm:text-md ">{authorDescription}</span>
+        </div>
+      </footer>
+    </blockquote>
+  )
+}
 
 const YouthSurveyPage = () => {
   const [ref, inView, entry] = useInView()
@@ -215,23 +277,30 @@ const YouthSurveyPage = () => {
         ></iframe>
       </section>
 
-      <section className="grid lg:grid-cols-3 gap-8 container">
+      <section className="grid lg:grid-cols-2 gap-8 container">
         <BlockQuote
           quote="We’d like thank our community partners for launching this survey, and we look forward to learning more on how we can identify and respond to the needs of our community."
           authorName="Georelle Mendoza"
           authorDescription="President, FILCASA"
-          avatar={g}
+          avatar="g"
         />
         <BlockQuote
           quote="We recognize the lack of visibility and spaces for queer and trans Filipino youth to be heard and made sure that the survey can be as inclusive to them."
           authorName="Members"
           authorDescription="Makulay atbp."
+          avatar="pride"
         />
         <BlockQuote
           quote="Ang mga hadlang sa mga mapagkukunan na kinakaharap ng mga migranteng undocumented, at mga kabataan uring manggagawa ay maaari lamang matugunan sa pamamagitan ng pag-iisa"
           authorName="Nicole Araneta"
           authorDescription="Chairperson, Anakbayan-Canada"
-          avatar={nicole}
+          avatar="nicole"
+        />
+        <BlockQuote
+          quote="With our kababayans, we want to help extend our reach to Filipino youth and their families to better understand their needs while providing them with services, resources, and support during these difficult times."
+          authorName="Kristal Mae Puguan"
+          authorDescription="President, Carleton University Filipino Students’ Association"
+          avatar="cufsa"
         />
       </section>
       <section className="bg-gray-800 py-12 mt-8">
