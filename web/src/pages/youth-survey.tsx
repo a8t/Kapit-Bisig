@@ -5,6 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Helmet from "react-helmet"
 import { useTranslation } from "react-i18next"
 import Img from "gatsby-image/withIEPolyfill"
+import {
+  Menu,
+  MenuList,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  MenuPopover,
+  MenuLink,
+} from "@reach/menu-button"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -335,72 +344,62 @@ const YouthSurveyPage = () => {
 }
 export default YouthSurveyPage
 
-const LanguageSwitcherOption = ({ onClick, children }) => {
+const LanguageSwitcherOption = ({ onSelect, children }) => {
   return (
-    <a
-      href="#"
+    <MenuItem
       className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
       role="menuitem"
-      onClick={onClick}
+      onSelect={onSelect}
     >
       {children}
-    </a>
+    </MenuItem>
   )
 }
 
 function LanguageSwitcher() {
   const { t, i18n } = useTranslation("youthSurvey")
-  const [isOpen, setIsOpen] = useState(false)
-  const toggleIsOpen = () => setIsOpen(!isOpen)
 
   const createLanguageSwitch = lang => e => {
-    e.preventDefault()
     i18n.changeLanguage(lang)
     return false
   }
 
   return (
-    <>
-      <div
-        className="pointer text-xs sm:text-sm m-auto fixed bg-white p-3 px-6 shadow-xl border-2 rounded-full z-50 flex justify-center items-center"
-        style={{ right: 16, top: 72 }}
-        onClick={toggleIsOpen}
-      >
-        <FontAwesomeIcon icon="language" className="mr-2" />
-        {t("language")}
-        <FontAwesomeIcon icon="angle-down" className="ml-2" />
-        <Transition
-          show={isOpen}
-          enter="transition ease-out duration-100 transform"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="transition ease-in duration-75 transform"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
-        >
-          <div
-            className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg"
-            style={{ top: 42 }}
-          >
-            <div className="rounded-md bg-white shadow-xs">
-              <div
-                className="py-1"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="options-menu"
+    <div className="fixed z-50" style={{ right: 16, top: 72 }}>
+      <Menu>
+        {({ isExpanded }) => (
+          <>
+            <MenuButton className="pointer text-xs sm:text-sm m-auto bg-white p-3 px-6 shadow-xl border-2 rounded-full flex justify-center items-center">
+              <FontAwesomeIcon icon="language" className="mr-2" />
+              {t("language")}
+              <FontAwesomeIcon icon="angle-down" className="ml-2" />
+            </MenuButton>
+            <Transition
+              show={isExpanded}
+              enter="transition ease-out duration-100 transform"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="transition ease-in duration-75 transform"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <MenuList
+                portal={false}
+                className="absolute right-0 mt-2 w-56 rounded-md shadow-lgrounded-md bg-white shadow-xs py-1"
+                // style={{ top: 42 }}
               >
-                <LanguageSwitcherOption onClick={createLanguageSwitch("en")}>
+                <LanguageSwitcherOption onSelect={createLanguageSwitch("en")}>
                   English
                 </LanguageSwitcherOption>
-                <LanguageSwitcherOption onClick={createLanguageSwitch("tg")}>
+                <LanguageSwitcherOption onSelect={createLanguageSwitch("tg")}>
                   Tagalog
                 </LanguageSwitcherOption>
                 {/* <LanguageSwitcherOption onClick={createLanguageSwitch('fr')}>French</LanguageSwitcherOption> */}
-              </div>
-            </div>
-          </div>
-        </Transition>
-      </div>
-    </>
+              </MenuList>
+            </Transition>
+          </>
+        )}
+      </Menu>
+    </div>
   )
 }
