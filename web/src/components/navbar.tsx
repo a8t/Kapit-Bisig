@@ -25,6 +25,14 @@ const NavbarLink = props => {
     <Link
       activeClassName=" bg-blue-700"
       className={navBarClassName}
+      getProps={({ location }) => {
+        console.log(location.pathname, props.to)
+        return {
+          className: location.pathname.includes(props.to)
+            ? "bg-blue-700 " + navBarClassName
+            : navBarClassName,
+        }
+      }}
       {...props}
     />
   )
