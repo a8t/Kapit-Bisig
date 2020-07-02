@@ -372,7 +372,9 @@ function LanguageSwitcher() {
                 <LanguageSwitcherOption langPath={"/tg/youth-survey"}>
                   Tagalog
                 </LanguageSwitcherOption>
-                {/* <LanguageSwitcherOption onClick={createLanguageSwitch('fr')}>French</LanguageSwitcherOption> */}
+                <LanguageSwitcherOption langPath={"/fr/youth-survey"}>
+                  Français
+                </LanguageSwitcherOption>
               </MenuList>
             </Transition>
           </>

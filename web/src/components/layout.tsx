@@ -10,6 +10,7 @@ import i18n from "i18next"
 import { initReactI18next } from "react-i18next"
 import youthSurvey_en from "./i18n/en/youth-survey.json"
 import youthSurvey_tg from "./i18n/tg/youth-survey.json"
+import youthSurvey_fr from "./i18n/fr/youth-survey.json"
 i18n.use(initReactI18next).init({
   fallbackLng: "en",
   resources: {
@@ -18,6 +19,9 @@ i18n.use(initReactI18next).init({
     },
     tg: {
       youthSurvey: youthSurvey_tg,
+    },
+    fr: {
+      youthSurvey: youthSurvey_fr,
     },
   },
   // lng: "en",
@@ -51,6 +55,8 @@ const Layout = ({ children, className = "" }) => {
   useEffect(() => {
     if (location.pathname.includes("/tg/")) {
       i18next.changeLanguage("tg")
+    } else if (location.pathname.includes("/fr/")) {
+      i18next.changeLanguage("fr")
     } else {
       i18next.changeLanguage("eng")
     }
