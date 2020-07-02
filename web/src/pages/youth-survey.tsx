@@ -37,30 +37,30 @@ const KBLogoCircle = (
   </div>
 )
 
-const SurveyHeader = () => (
-  <header className="pt-32 pb-20 sm:max-height-60vh flex items-center text-white relative overflow-y-hidden bg-gray-800">
-    <section className="container flex flex-col">
-      <Title color="white" className="lg:text-6xl self-start relative">
-        Kapit-Bisig Filipino Youth Network: COVID-19 Survey
-      </Title>
-      <Subtitle color="white" className="self-start max-w-2xl">
-        <span className="text-xl lg:text-2xl font-normal">
-          Help community organizations best serve your community,
-          <br />
-          enter a $50 gift card raffle.
-        </span>
-      </Subtitle>
+const SurveyHeader = () => {
+  const { t, i18n } = useTranslation("youthSurvey")
+  return (
+    <header className="pt-32 pb-20 sm:max-height-60vh flex items-center text-white relative overflow-y-hidden bg-gray-800">
+      <section className="container flex flex-col">
+        <Title color="white" className="lg:text-6xl self-start relative">
+          {t("title")}
+        </Title>
+        <Subtitle color="white" className="self-start max-w-2xl">
+          <span className="text-xl lg:text-2xl font-normal">
+            {t("subtitle")}
+          </span>
+        </Subtitle>
 
-      <Link
-        to="#survey"
-        className=" self-start text-xs sm:text-sm mt-2 bg-white p-2 px-6 shadow-xl border-2 rounded-full z-50 flex justify-center items-center"
-      >
-        Start Survey
-      </Link>
-    </section>
-  </header>
-)
-
+        <Link
+          to="#survey"
+          className=" self-start text-xs sm:text-sm mt-2 bg-white p-2 px-6 shadow-xl border-2 rounded-full z-50 flex justify-center items-center"
+        >
+          {t("startButton")}
+        </Link>
+      </section>
+    </header>
+  )
+}
 const BlockQuote = ({
   quote,
   avatar = null,
@@ -175,6 +175,7 @@ const BlockQuote = ({
 
 const YouthSurveyPage = () => {
   const [ref, inView, entry] = useInView()
+  const { t, i18n } = useTranslation("youthSurvey")
   return (
     <Layout className="bg-gray-200">
       <Helmet htmlAttributes={{ class: "smooth-scroll" }} />
@@ -186,17 +187,14 @@ const YouthSurveyPage = () => {
 
       <section className="container pt-20 grid lg:grid-cols-2 gap-16">
         <article className="space-y-8 max-w-xl">
-          <Subtitle color="dark">
-            The situation regarding COVID-19 is worsening and it has a
-            significant impact on our Filipino community.
-          </Subtitle>
+          <Subtitle color="dark">{t("intro.body")}</Subtitle>
           <Paragraph>
-            This survey helps us:
+            {t("intro.listHeader")}
             <ol className="my-4 space-y-4 list-none flex flex-col items-start">
               {[
-                "Understand the impacts of COVID-19 on Filipino youth and their families in Canada",
-                "Identify specific concerns or needs we can respond to",
-                "Create or revise programming to tailor to the needs of our Filipino-Canadian community",
+                t("intro.listItemUnderstand"),
+                t("intro.listItemIdentify"),
+                t("intro.listItemCreate"),
               ].map((str, index) => (
                 <li className="flex justify-center items-center">
                   <span className="mr-4 font-bold text-lg">{index + 1}</span>
@@ -207,7 +205,7 @@ const YouthSurveyPage = () => {
           </Paragraph>
         </article>
         <article className="p-8 bg-white shadow-lg">
-          <Subtitle>Organizers</Subtitle>
+          <Subtitle>{t("organizers")}</Subtitle>
           <ul className="mt-4 space-y-4">
             <li>
               <Link to="/organizations/anakbayan-canada">Anakbayan Canada</Link>
@@ -235,37 +233,23 @@ const YouthSurveyPage = () => {
           <section>
             <Subtitle>
               <FontAwesomeIcon icon="poll" className="mr-4" />
-              About
+              {t("about.title")}
             </Subtitle>
 
-            <Paragraph>
-              After the completion of the survey, participants can opt in to
-              enter a raffle to win a $50 gift card.
-            </Paragraph>
+            <Paragraph>{t("about.raffle")}</Paragraph>
 
-            <Paragraph>
-              The survey should take about 20 minutes to complete.
-            </Paragraph>
+            <Paragraph>{t("about.surveyTime")}</Paragraph>
 
-            <Paragraph>
-              You can leave the survey at any time. If you no longer want your
-              answers included in the survey after completion, contact us.
-            </Paragraph>
+            <Paragraph>{t("about.leaveSurvey")}</Paragraph>
           </section>
 
           <section>
             <Subtitle>
               <FontAwesomeIcon icon="user-shield" className="mr-4" />
-              Privacy and Accessibility
+              {t("privacyAndAccessibility.title")}
             </Subtitle>
-            <Paragraph>
-              All answers to this survey will be confidential. Personal
-              information that identifies you will not be shared.
-            </Paragraph>
-            <Paragraph>
-              If you cannot complete the survey online and would like to do it
-              by phone, contact us at our hotline +1 866-275-4046.
-            </Paragraph>
+            <Paragraph> {t("privacyAndAccessibility.confidential")}</Paragraph>
+            <Paragraph>{t("privacyAndAccessibility.accessibliity")}</Paragraph>
           </section>
         </div>
       </section>
@@ -279,7 +263,7 @@ const YouthSurveyPage = () => {
       >
         <iframe
           className="airtable-embed z-10 relative rounded-lg"
-          src="https://airtable.com/embed/shrKX3gvA4w5zWwpD?backgroundColor=purple"
+          src={t("embedLink")}
           width="100%"
           height="600"
           style={{ background: "white", border: "1px solid #ccc" }}
@@ -319,15 +303,11 @@ const YouthSurveyPage = () => {
             className="h-24 md:h-48 mr-auto md:mr-8  md:ml-auto"
           />
           <div className="max-w-xl  mt-8 md:mt-0 mr-auto">
-            <Subtitle color="white">Join us</Subtitle>
+            <Subtitle color="white">{t("joinUs.title")}</Subtitle>
 
+            <Paragraph color="white">{t("joinUs.invitation")}</Paragraph>
             <Paragraph color="white">
-              Other organizations and groups are invited to share the survey
-              amongst their networks of Filipino youth, and join the network to
-              support youth during this time.
-            </Paragraph>
-            <Paragraph color="white">
-              If you would like to get in touch with us, please send an email to{" "}
+              {t("joinUs.contact")}
               <a
                 href="mailto:youthsurvey@kapitbisig.ca"
                 className=" text-teal-300 font-bold"

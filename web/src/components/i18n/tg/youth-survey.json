@@ -1,3 +1,23 @@
 {
-  "language": "Tagalog"
+  "language": "Tagalog",
+  "embedLink": "https://airtable.com/embed/shrM2VK6UmEdRHW5w?backgroundColor=purple",
+  "title": "Kapit-Bisig Youth Network: Survey Ukol sa Epekto ng COVID-19 sa mga Kabataang Pilipino",
+  "subtitle": "Tulungan ang mga organisasyon sa komunidad para paglingkuran ang inyong komunidad, sumali sa $50 gift card raffle.",
+  "startButton": "Simulan ang survey",
+  "intro.body": "Ang sitwasyon tungkol sa COVID-19 ay lumalala at ito ay may malaking epekto sa ating komunidad ng mga Pilipino.",
+  "intro.listHeader": "Makakatulong ang survey sa amin para:",
+  "intro.listItemUnderstand": "Unawain ang epekto ng COVID-19 sa mga kabataang Pilipino at kanilang mga pamilya sa Canada",
+  "intro.listItemIdentify": "Tukuyin ang mga espesipikong mga alalahanin at pangangailangan na maaari naming tugunan",
+  "intro.listItemCreate": "Gumawa or baguhin ang mga gawain na gumagabay sa mga pangangailangan ng ating komunidad na Pilipino-Canadian",
+  "organizers": "Tagapag-organisa",
+  "about.title": "Tungkol sa amin",
+  "about.raffle": "Pagkatapos kumpletuhin ang survey, ang mga sumagot ay pwedeng sumali sa raffle para manalo ng $50 na gift card.",
+  "about.surveyTime": "Ang survey ay aabot ng halos na 20 minutos upang makumpleto.",
+  "about.leaveSurvey": "Maaari mong iiwan ang survey kahit anumang oras. Kung hindi mo na nais isali ang iyong mga sagot sa survey pagkatapos mong kumpletuhin, kontakin mo kami.",
+  "privacyAndAccessibility.title": "Privacy at Accessibility",
+  "privacyAndAccessibility.confidential": "Lahat ng sagot sa survey ay kumpidensyal. Ang personal na impormasyon na makakakilala saiyo ay hindi ibabahagi.",
+  "privacyAndAccessibility.accessibliity": "Kung hindi mo makumpleto ang survey sa online at nais mong gawin gamit ang telepono, kontakin mo kami sa aming hotline +1 866-275-4046.",
+  "joinUs.title": "Sumali na!",
+  "joinUs.invitation": "Iniimbita namin ang ibang mga organisasyon at grupo na ibahagi ang survey sa kani-kanilang mga nakakaugnay ng mga kabataan na Pilipino at sumali sa amin para suportahan ang kabataan sa mga oras na ito.",
+  "joinUs.contact": "Kung nais mong makipag-ugnay sa amin, maaari kayong magpadala ng email sa "
 }
