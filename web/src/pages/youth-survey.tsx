@@ -324,12 +324,15 @@ const YouthSurveyPage = () => {
 }
 export default YouthSurveyPage
 
-const LanguageSwitcherOption = ({ onSelect, children }) => {
+import { useNavigate } from "@reach/router"
+
+const LanguageSwitcherOption = ({ langPath, children }) => {
+  const navigate = useNavigate()
   return (
     <MenuItem
       className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
       role="menuitem"
-      onSelect={onSelect}
+      onSelect={() => navigate(langPath)}
     >
       {children}
     </MenuItem>
@@ -338,11 +341,6 @@ const LanguageSwitcherOption = ({ onSelect, children }) => {
 
 function LanguageSwitcher() {
   const { t, i18n } = useTranslation("youthSurvey")
-
-  const createLanguageSwitch = lang => e => {
-    i18n.changeLanguage(lang)
-    return false
-  }
 
   return (
     <div className="fixed z-50" style={{ right: 16, top: 72 }}>
@@ -368,10 +366,10 @@ function LanguageSwitcher() {
                 className="absolute right-0 mt-2 w-56 rounded-md shadow-lgrounded-md bg-white shadow-xs py-1"
                 // style={{ top: 42 }}
               >
-                <LanguageSwitcherOption onSelect={createLanguageSwitch("en")}>
+                <LanguageSwitcherOption langPath={"/youth-survey"}>
                   English
                 </LanguageSwitcherOption>
-                <LanguageSwitcherOption onSelect={createLanguageSwitch("tg")}>
+                <LanguageSwitcherOption langPath={"/tg/youth-survey"}>
                   Tagalog
                 </LanguageSwitcherOption>
                 {/* <LanguageSwitcherOption onClick={createLanguageSwitch('fr')}>French</LanguageSwitcherOption> */}

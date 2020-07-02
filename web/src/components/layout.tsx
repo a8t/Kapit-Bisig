@@ -29,12 +29,14 @@ i18n.use(initReactI18next).init({
   },
 })
 
-import React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { useLocation } from "@reach/router"
 
 import MainFooter from "./footer"
 import Navbar from "./navbar"
+import i18next from "i18next"
 
 const Layout = ({ children, className = "" }) => {
   const data = useStaticQuery(graphql`
@@ -44,6 +46,15 @@ const Layout = ({ children, className = "" }) => {
       }
     }
   `)
+
+  const location = useLocation()
+  useEffect(() => {
+    if (location.pathname.includes("/tg/")) {
+      i18next.changeLanguage("tg")
+    } else {
+      i18next.changeLanguage("eng")
+    }
+  }, [location.pathname])
 
   return (
     <div className={"min-h-screen flex flex-col " + className}>

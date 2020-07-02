@@ -69,5 +69,14 @@ module.exports = {
         pixelId: "260609798344406",
       },
     },
+
+    {
+      resolve: "gatsby-plugin-i18n",
+      options: {
+        langKeyDefault: "en",
+        useLangKeyLayout: false,
+        prefixDefault: false,
+      },
+    },
   ],
 }
