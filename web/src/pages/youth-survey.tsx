@@ -53,7 +53,7 @@ const SurveyHeader = () => {
 
         <Link
           to="#survey"
-          className=" self-start text-xs sm:text-sm mt-2 bg-white p-2 px-6 shadow-xl border-2 rounded-full z-50 flex justify-center items-center"
+          className=" self-start text-xs sm:text-sm mt-2 bg-white p-2 px-6 shadow-xl border-2 rounded-full  flex justify-center items-center"
         >
           {t("startButton")}
         </Link>
@@ -223,6 +223,14 @@ const YouthSurveyPage = () => {
             </li>
             <li>
               <Link to="/organizations/anak-inc">ANAK, Inc</Link>
+            </li>
+            <li>
+              <Link to="/organizations/Tulayan">Tulayan</Link>
+            </li>
+            <li>
+              <Link to="/organizations/carleton-university-filipino-students-association">
+                Carleton University Filipino Students Association
+              </Link>
             </li>
           </ul>
         </article>
