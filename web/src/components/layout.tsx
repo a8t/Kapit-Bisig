@@ -8,22 +8,9 @@ library.add(fab, fas)
 // configure i18n
 import i18n from "i18next"
 import { initReactI18next } from "react-i18next"
-import youthSurvey_en from "./i18n/en/youth-survey.json"
-import youthSurvey_tg from "./i18n/tg/youth-survey.json"
-import youthSurvey_fr from "./i18n/fr/youth-survey.json"
 i18n.use(initReactI18next).init({
   fallbackLng: "en",
-  resources: {
-    en: {
-      youthSurvey: youthSurvey_en,
-    },
-    tg: {
-      youthSurvey: youthSurvey_tg,
-    },
-    fr: {
-      youthSurvey: youthSurvey_fr,
-    },
-  },
+  resources: {},
   // lng: "en",
 
   keySeparator: false, // we do not use keys in form messages.welcome
